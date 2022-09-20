@@ -6,23 +6,11 @@
 #include <TCanvas.h>
 
 namespace UiUtils {
-	// GUI specify a directory path
-	TString getDirectoryPath();
 
-	// GUI specify a directory path
-	TString getFilePath();
+  void msgBoxInfo(const char *title, const char *text);
 
-	// Show OK message box
-	void msgBoxInfo(const char* title, const char* text);
-
-	// Save histogram as PNG image
-	void saveHistogramAsImage(TH1* hist, const char* imageFilePath);
-
-	// Plot tree branch
-	void plotBranch(TTree* tree, const char* branchName, const char* title, const char* xTitle, const char* yTitle, int binning = 100);
-
-	// Add Canvas Multi-Title
-	void addCanvasTitle(TCanvas* canvas, const char* title, const char* subtitle);
+  // GUI specify a directory path
+  TList* getFileNamesList(const char *text, Bool_t isMultiple);
 }
 
 #endif
