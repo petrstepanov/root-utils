@@ -14,10 +14,6 @@ project(RootUtils LANGUAGES CXX)
 # TODO: try just this
 find_package(ROOT CONFIG REQUIRED)
 
-find_package(Doxygen
-             REQUIRED dot
-             OPTIONAL_COMPONENTS mscgen dia)
-
 # Obtain ROOT CXX standard
 string(REGEX MATCH "-std=c\\+\\+([0-9]+)" ROOT_CXX_STANDARD "${ROOT_CXX_FLAGS}")
 set(ROOT_CXX_STANDARD "${CMAKE_MATCH_1}")
