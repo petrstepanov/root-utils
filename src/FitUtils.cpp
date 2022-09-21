@@ -9,11 +9,11 @@
 //#include <iomanip>
 //#include <fstream>
 
-CrystalBallFunctionObject::CrystalBallFunctionObject(Bool_t _isReversed) {
+FitUtils::CrystalBallFunctionObject::CrystalBallFunctionObject(Bool_t _isReversed) {
   isReversed = _isReversed;
 }
 
-Double_t CrystalBallFunctionObject::operator()(double *_x, double *par) {
+Double_t FitUtils::CrystalBallFunctionObject::operator()(double *_x, double *par) {
   // https://en.wikipedia.org/wiki/Crystal_Ball_function
   LongDouble_t x = _x[0];
   LongDouble_t a = par[0];

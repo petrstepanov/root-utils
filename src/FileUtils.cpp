@@ -110,7 +110,7 @@ Double_t FileUtils::getBranchMaximum(TTree *tree, const char *branchName) {
   return tree->GetMaximum(branchAndLeafName);
 }
 
-std::vector<TString> FileUtils::parseFilePath(const char *filePathName) {
+PathComponents FileUtils::parseFilePath(const char *filePathName) {
   // Check file exists
   if (gSystem->AccessPathName(filePathName, EAccessMode::kFileExists)) {
     Error("FileUtils::parseFilePath()", "\"%s\" file does not exist", filePathName);
