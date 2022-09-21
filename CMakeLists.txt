@@ -38,8 +38,8 @@ list(FILTER LINKDEFH INCLUDE REGEX "[lL]ink[dD]ef")
 message(STATUS "Found LinkDef file: ${LINKDEFH}")
 
 # Exclude Linkdef from other headers
-list(REMOVE_ITEM HEADERS ${LINKDEFH})
-message(STATUS "List of header files only: ${HEADERS}")
+# list(REMOVE_ITEM HEADERS ${LINKDEFH})
+# message(STATUS "List of header files only: ${HEADERS}")
 
 # TARGET: generate the dictionary (extra C++ file containing custom ROOT methods)
 set(DICTIONARY_TARGET ${PROJECT_NAME})
