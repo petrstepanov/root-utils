@@ -1,18 +1,14 @@
+// My includes
 #include "./FileUtils.h"
-#include "./StringUtils.h"
 
+// ROOT includes
 #include <TSystem.h>
 #include <TSystemDirectory.h>
-//#include <TGClient.h>
 #include <TObjString.h>
-//#include <TUUID.h>
 #include <TError.h>
 
-// #include <TCanvas.h>
-
-//#include <iostream>
-//#include <iomanip>
-//#include <fstream>
+// STD includes
+#include <limits>
 
 using namespace FileUtils;
 
@@ -23,9 +19,15 @@ TList* FileUtils::findFilesInDirectory(const char *dirPath, const char *extensio
 
   // Check directory exists
   TSystemDirectory *dir = new TSystemDirectory(dirPath, dirPath);
+
   if (!dir->IsDirectory()) {
-    Error("FileUtils::getFilePathsInDirectory()", "\"%s\" is not a directory", dirPath);
-    return filePathNames;
+    Fatal("FileUtils::getFilePathsInDirectory()", "\"%s\" is not a directory", dirPath);
+    exit(1);
+  }
+
+  if (!gSystem->AccessPathName(dirPath, EAccessMode::kReadPermission)) {
+    Fatal("FileUtils::getFilePathsInDirectory()", "\"%s\" directory is not readable", dirPath);
+    exit(1);
   }
 
   // Obtain list of files in the directory
@@ -95,56 +97,82 @@ TBranch* FileUtils::getBranch(TTree *tree, const char *branchName) {
 }
 
 Double_t FileUtils::getBranchMinimum(TTree *tree, const char *branchName) {
-  TBranch* branch = getBranch(tree, branchName);
+  TBranch *branch = getBranch(tree, branchName);
   const char *leafName = branch->GetListOfLeaves()->At(0)->GetName();
   TString branchAndLeafName = TString::Format("%s/%s", branchName, leafName);
   return tree->GetMinimum(branchAndLeafName);
 }
 
 Double_t FileUtils::getBranchMaximum(TTree *tree, const char *branchName) {
-  TBranch* branch = getBranch(tree, branchName);
+  TBranch *branch = getBranch(tree, branchName);
   const char *leafName = branch->GetListOfLeaves()->At(0)->GetName();
   TString branchAndLeafName = TString::Format("%s/%s", branchName, leafName);
   return tree->GetMaximum(branchAndLeafName);
 }
-
-//TH1* getBranchHistogram(TTree *tree, const char *branchName, Int_t nBins) {
-//  TString histogramName = "hist_";
-//  histogramName += branch->GetName();
-//  Double_t branchMinimum =
-//branchMinimum = getBranchMinimum(TTree *tree, const char *branchName) {
-//  TH1* hist = new TH1D("histogramName", "", )
-//}
 
 std::vector<TString> FileUtils::parseFilePath(const char *filePathName) {
   // Check file exists
   if (gSystem->AccessPathName(filePathName, EAccessMode::kFileExists)) {
     Error("FileUtils::parseFilePath()", "\"%s\" file does not exist", filePathName);
     exit(1);
-  };
+  }
+  ;
 
-  std::vector<TString> vector;
+  PathComponents pt;
   // Extract file path file path directory
   TString dirName = gSystem->DirName(filePathName);
-  vector[0] = dirName;
+  pt.path = dirName;
 
   // Extract baseName
   TString baseName = gSystem->BaseName(filePathName);
-  vector[1] = dirName;
+  pt.base = baseName;
 
   // Extract extension
   Ssiz_t pos = baseName.Last('.');
   if (pos < 0 || pos > baseName.Length()) {
     // If there is no extension
-    vector[3] = baseName;
-    vector[4] = TString("");
+    pt.name = baseName;
+    pt.extension = TString("");
   } else {
     // If there is extension - trim string: https://root.cern.ch/root/html303/examples/tstring.C.html
     TString fileName = baseName(0, pos);
     TString extension = baseName(pos, fileName.Length() - 1);
-    vector[3] = fileName;
-    vector[4] = extension;
+    pt.name = fileName;
+    pt.extension = extension;
   }
 
-  return vector;
+  return pt;
+}
+
+Double_t FileUtils::getBranchMaximumInFiles(TList *files, const char *treeName, const char *branchName) {
+  Double_t maximum = DBL_MIN;
+  for (TObject *o : *files) {
+    // Get file name path
+    TObjString *objString = (TObjString*) o;
+    TString fileNamePath = objString->GetString();
+
+    // Open ROOT file and get the tree
+    TFile *file = openFile(fileNamePath.Data());
+    TTree *tree = getTree(file, treeName);
+
+    // Get branch maximum value
+    Double_t branchMaximum = getBranchMaximum(tree, branchName);
+
+    maximum = TMath::Max(maximum, branchMaximum);
+  }
+  return maximum;
+}
+
+TH1* FileUtils::getBranchHistogram(TTree *tree, const char *branchName, Int_t nBins) {
+  // Prepare histogram
+  TString histogramName = TString::Format("%s-%s", tree->GetName(), branchName);
+  Double_t branchMinimum = getBranchMinimum(tree, branchName);
+  Double_t branchMaximum = getBranchMaximum(tree, branchName);
+  TH1 *hist = new TH1D(histogramName, "", nBins, branchMinimum, branchMaximum);
+
+  // Populate histogram with tree branch values
+  TString drawOption = TString::Format("%s >> %s", branchName, histogramName.Data());
+  tree->Draw(drawOption, "", "goff");
+
+  return hist;
 }

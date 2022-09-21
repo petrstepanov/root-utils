@@ -23,6 +23,7 @@ namespace FileUtils {
    * @brief Obtain list of file paths in directory (with given extension).
    *
    * Function returns a TList* of TObjString* with full absolute paths of files in a given directory with given extension.
+   * Program exits if directory does not exist or not readable.
    *
    * @return TList* of TObjString* with full absolute paths.
    * @param dirPath Directory path.
@@ -40,6 +41,28 @@ namespace FileUtils {
    */
   TFile* openFile(const char *filePathName);
 
+  /** @struct PathComponents
+   *  @brief This structure contains parsed file path components
+   */
+  /** @var PathComponents::path
+   *  Member 'path' contains absolute file path
+   */
+  /** @var PathComponents::base
+   *  Member 'base' contains filename with extension
+   */
+  /** @var PathComponents::name
+   *  Member 'name' contains filename only
+   */
+  /** @var PathComponents::extension
+   *  Member 'extension' contains extension
+   */
+  struct PathComponents {
+      TString path;
+      TString base;
+      TString name;
+      TString extension;
+  };
+
   /**
    * @brief Parse absolute file path into path, name and extension.
    *
@@ -50,9 +73,7 @@ namespace FileUtils {
    * @param extension Optional extension of files to find.
    */
   //
-  std::vector<TString> parseFilePath(const char *filePathName);
-
-  TFile* openFile(const char *filePathName);
+  PathComponents parseFilePath(const char *filePathName);
 
   TTree* getTree(TFile* file, const char *treeName);
 
@@ -62,7 +83,9 @@ namespace FileUtils {
 
   Double_t getBranchMaximum(TTree *tree, const char *branchName);
 
-//  TH1* getBranchHistogram(TBranch* branch, Int_t nBins);
+  Double_t getBranchMaximumInFiles(TList* files, const char* treeName, const char* branchName);
+
+  TH1* getBranchHistogram(TTree *tree, const char *branchName, Int_t nBins=150);
 }
 
 #endif

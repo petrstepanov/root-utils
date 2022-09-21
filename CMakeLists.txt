@@ -14,6 +14,10 @@ project(RootUtils LANGUAGES CXX)
 # TODO: try just this
 find_package(ROOT CONFIG REQUIRED)
 
+find_package(Doxygen
+             REQUIRED dot
+             OPTIONAL_COMPONENTS mscgen dia)
+
 # Obtain ROOT CXX standard
 string(REGEX MATCH "-std=c\\+\\+([0-9]+)" ROOT_CXX_STANDARD "${ROOT_CXX_FLAGS}")
 set(ROOT_CXX_STANDARD "${CMAKE_MATCH_1}")
@@ -103,11 +107,21 @@ get_filename_component(EXECUTABLE_NAME "${MAIN_CPP}" NAME_WE)
 set_property(TARGET ${EXECUTABLE_TARGET} PROPERTY OUTPUT_NAME ${EXECUTABLE_NAME})
 
 # Set output name for the executable - trick to have library and binary with the same name 
-target_link_libraries(${EXECUTABLE_TARGET} ${SHARED_LIB_TARGET})
+# target_link_libraries(${EXECUTABLE_TARGET} ${SHARED_LIB_TARGET})
 
 #message(STATUS "${ROOT_BINDIR}")
 #message(STATUS "${ROOT_LIBRARY_DIR}")
 #message(STATUS "${ROOT_INCLUDE_DIRS}")
+
+
+# Create output directory for doxygen 
+#add_custom_target(output_dir
+#  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/docs/xml
+#)
+#add_dependencies(${EXECUTABLE_TARGET} output_dir)
+
+#set(DOXYGEN_TARGET "docs")
+#doxygen_add_docs(${DOXYGEN_TARGET} WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/docs/xml)
 
 # TARGET: integrate library to ROOT
 # Override the default install location "/usr/local/" to ROOT directory
