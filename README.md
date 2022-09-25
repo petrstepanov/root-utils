@@ -1,6 +1,10 @@
 ROOT Utils
 ==========
 
+🏠️ Project homepage: https://petrstepanov.com/root-utils
+
+🐱 Github repository: https://github.com/petrstepanov/root-utils
+
 Shared library for ROOT framework containing list of common functions. Api reference is published here: [https://github.com/petrstepanov/root-utils/blob/master/api.md](https://github.com/petrstepanov/root-utils/blob/master/api.md)
 
 How to Install
