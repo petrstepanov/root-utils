@@ -1,10 +1,10 @@
 #include "./UiUtils.h"
 #include "./HistUtils.h"
 
-#include <TGMsgBox.h>
-#include <TROOT.h>
-#include <TText.h>
-#include <TEnv.h>
+//#include <TROOT.h>
+//#include <TText.h>
+//#include <TEnv.h>
+#include <TApplication.h>
 #include <TSystem.h>
 #include <TGFileDialog.h>
 #include <TError.h>
@@ -12,14 +12,17 @@
 
 using namespace UiUtils;
 
-void UiUtils::msgBoxInfo(const char *title, const char *text) {
-  new TGMsgBox(gClient->GetRoot(), NULL, title, text, EMsgBoxIcon::kMBIconAsterisk, EMsgBoxButton::kMBOk);
+void UiUtils::showMessageBox(const char *text, const char *title, EMsgBoxIcon icon = EMsgBoxIcon::kMBIconAsterisk){
+  if (strlen(title) == 0){
+    title = gApplication->GetTitle();
+  }
+  new TGMsgBox(gClient->GetRoot(), NULL, title, text, icon, EMsgBoxButton::kMBOk);
 }
 
-TList* UiUtils::getFileNamesList(const char *text, Bool_t isMultiple) {
+TList* UiUtils::getFilePaths(Bool_t isMultiple, const char* message) {
   // Show information message box
-  if (strlen(text)) {
-    msgBoxInfo("Open Files", text);
+  if (strlen(message)) {
+    showMessageBox(message, "Open Files");
   }
 
   // Show file picker
