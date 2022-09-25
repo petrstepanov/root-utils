@@ -144,9 +144,28 @@ PathComponents FileUtils::parseFilePath(const char *filePathName) {
   return pt;
 }
 
-Double_t FileUtils::getBranchMaximumInFiles(TList *files, const char *treeName, const char *branchName) {
+Double_t FileUtils::getBranchMinimumInFiles(TList *filePaths, const char *treeName, const char *branchName) {
+  Double_t minimum = DBL_MAX;
+  for (TObject *o : *filePaths) {
+    // Get file name path
+    TObjString *objString = (TObjString*) o;
+    TString fileNamePath = objString->GetString();
+
+    // Open ROOT file and get the tree
+    TFile *file = openFile(fileNamePath.Data());
+    TTree *tree = getTree(file, treeName);
+
+    // Get branch maximum value
+    Double_t branchMinimum = getBranchMinimum(tree, branchName);
+
+    minimum = TMath::Max(minimum, branchMinimum);
+  }
+  return minimum;
+}
+
+Double_t FileUtils::getBranchMaximumInFiles(TList *filePaths, const char *treeName, const char *branchName) {
   Double_t maximum = DBL_MIN;
-  for (TObject *o : *files) {
+  for (TObject *o : *filePaths) {
     // Get file name path
     TObjString *objString = (TObjString*) o;
     TString fileNamePath = objString->GetString();

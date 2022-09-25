@@ -22,14 +22,14 @@ March 2008
 --------------------------------|---------------------------------------------
 `public TList * `[`findFilesInDirectory`](#namespaceFileUtils_1a96a2b93d8699379f78c048e90b4968c9)`(const char * dirPath,const char * extension)`            | Obtain list of file paths in directory (with given extension).
 `public TFile * `[`openFile`](#namespaceFileUtils_1a34ac56b2e27b16a4f39c7562083f7967)`(const char * filePathName)`            | Open ROOT file with given absolute path.
-`public `[`PathComponents`](#structFileUtils_1_1PathComponents)` `[`parseFilePath`](#namespaceFileUtils_1ae7e0896c1f05e8818bddd82fcc032239)`(const char * filePathName)`            | Parse absolute file path into path, name and extension.
-`public TTree * `[`getTree`](#namespaceFileUtils_1a8c4d09cff14a6e8961c18e72b014d4dc)`(TFile * file,const char * treeName)`            | 
+`public TTree * `[`getTree`](#namespaceFileUtils_1a8c4d09cff14a6e8961c18e72b014d4dc)`(TFile * file,const char * treeName)`            | Parse absolute file path into path, name and extension.
 `public TBranch * `[`getBranch`](#namespaceFileUtils_1a45e68df91807fe034fd708eb008cb7e4)`(TTree * tree,const char * branchName)`            | 
 `public Double_t `[`getBranchMinimum`](#namespaceFileUtils_1a5c6c473991d4e7dbe20d50d0f8f5527d)`(TTree * tree,const char * branchName)`            | 
 `public Double_t `[`getBranchMaximum`](#namespaceFileUtils_1a3178659d6557381e3ec5145dcf4c5c75)`(TTree * tree,const char * branchName)`            | 
 `public Double_t `[`getBranchMaximumInFiles`](#namespaceFileUtils_1ad3eb992a1e5a43ff67c410394c2d0845)`(TList * files,const char * treeName,const char * branchName)`            | 
-`public TH1 * `[`getBranchHistogram`](#namespaceFileUtils_1aa15e5724ad5a206fcf80a47ea94cb471)`(TTree * tree,const char * branchName,Int_t nBins)`            | 
-`struct `[`FileUtils::PathComponents`](#structFileUtils_1_1PathComponents) | This structure contains parsed file path components.
+`public TH1 * `[`getBranchHistogram`](#namespaceFileUtils_1aa15e5724ad5a206fcf80a47ea94cb471)`(TTree * tree,const char * branchName,Int_t nBins)`            | Shortcut to get a histogram from ROOT tree branch.
+`public `[`PathComponents`](#structFileUtils_1_1PathComponents)` `[`parseFilePath`](#namespaceFileUtils_1a6c7da44223cc4a1f99f2ec73a3d3c80f)`(const char * filePathName)`            | Parse absolute file path into path, name and extension.
+`struct `[`FileUtils::PathComponents`](#structFileUtils_1_1PathComponents) | Struct contains path components parsed by the [parseFilePath()](#namespaceFileUtils_1a6c7da44223cc4a1f99f2ec73a3d3c80f)
 
 ## Members
 
@@ -39,13 +39,13 @@ Obtain list of file paths in directory (with given extension).
 
 Function returns a TList* of TObjString* with full absolute paths of files in a given directory with given extension. Program exits if directory does not exist or not readable.
 
-#### Returns
-TList* of TObjString* with full absolute paths. 
-
 #### Parameters
 * `dirPath` Directory path. 
 
-* `extension` Optional extension of files to find.
+* `extension` Optional extension of files to find. 
+
+#### Returns
+TList* of TObjString* with full absolute paths.
 
 #### `public TFile * `[`openFile`](#namespaceFileUtils_1a34ac56b2e27b16a4f39c7562083f7967)`(const char * filePathName)` 
 
@@ -53,27 +53,23 @@ Open ROOT file with given absolute path.
 
 Function checks if a file is good and returns a pointer to a ROOT file TFile* with given absolute path.
 
-#### Returns
-Pointer to TFile* object. 
-
 #### Parameters
-* `filePathName` full ROOT file URI.
+* `filePathName` full ROOT file URI. 
 
-#### `public `[`PathComponents`](#structFileUtils_1_1PathComponents)` `[`parseFilePath`](#namespaceFileUtils_1ae7e0896c1f05e8818bddd82fcc032239)`(const char * filePathName)` 
+#### Returns
+Pointer to TFile* object.
+
+#### `public TTree * `[`getTree`](#namespaceFileUtils_1a8c4d09cff14a6e8961c18e72b014d4dc)`(TFile * file,const char * treeName)` 
 
 Parse absolute file path into path, name and extension.
 
-Function checks if file exists, if file is readable and parses path into a TList* containing corresponding path, name and extension.
-
-#### Returns
-TList* of TObjString* objects with full absolute paths. 
+Function parses file path into components: path, basename, name, extension.
 
 #### Parameters
-* `filePathName` Directory path. 
+* `filePathName` absolute file path. 
 
-* `extension` Optional extension of files to find.
-
-#### `public TTree * `[`getTree`](#namespaceFileUtils_1a8c4d09cff14a6e8961c18e72b014d4dc)`(TFile * file,const char * treeName)` 
+#### Returns
+[PathComponents](#structFileUtils_1_1PathComponents) struct with path components.
 
 #### `public TBranch * `[`getBranch`](#namespaceFileUtils_1a45e68df91807fe034fd708eb008cb7e4)`(TTree * tree,const char * branchName)` 
 
@@ -85,36 +81,62 @@ TList* of TObjString* objects with full absolute paths.
 
 #### `public TH1 * `[`getBranchHistogram`](#namespaceFileUtils_1aa15e5724ad5a206fcf80a47ea94cb471)`(TTree * tree,const char * branchName,Int_t nBins)` 
 
+Shortcut to get a histogram from ROOT tree branch.
+
+Function automatically determines histogram minimum and maximum.
+
+#### Parameters
+* `tree` Pointer to the tree. 
+
+* `branchName` branchName name of a branch. 
+
+* `nBins` number of bins in the histogram. Default is 150. 
+
+#### Returns
+TH1* pointer to the histogram.
+
+#### `public `[`PathComponents`](#structFileUtils_1_1PathComponents)` `[`parseFilePath`](#namespaceFileUtils_1a6c7da44223cc4a1f99f2ec73a3d3c80f)`(const char * filePathName)` 
+
+Parse absolute file path into path, name and extension.
+
+Function parses file path into components: path, basename, name, extension.
+
+#### Parameters
+* `filePathName` absolute file path. 
+
+#### Returns
+[PathComponents](#structFileUtils_1_1PathComponents) struct with path components.
+
 # struct `FileUtils::PathComponents` 
 
-This structure contains parsed file path components.
+Struct contains path components parsed by the [parseFilePath()](#namespaceFileUtils_1a6c7da44223cc4a1f99f2ec73a3d3c80f)
 
 ## Summary
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public TString `[`path`](#structFileUtils_1_1PathComponents_1a7aca5f41d470ef816c2d9c4862bf7d0a) | Member 'path' contains absolute file path
-`public TString `[`base`](#structFileUtils_1_1PathComponents_1a3c7cb0f30b423ed8f85bac1cd020a79b) | Member 'base' contains filename with extension
-`public TString `[`name`](#structFileUtils_1_1PathComponents_1a21eddcf7c60f5d124365481e5fc97780) | Member 'name' contains filename only
-`public TString `[`extension`](#structFileUtils_1_1PathComponents_1ad83ab03d5481848e1fb98467713ee31d) | Member 'extension' contains extension
+`public TString `[`path`](#structFileUtils_1_1PathComponents_1a7aca5f41d470ef816c2d9c4862bf7d0a) | Member absolute file path
+`public TString `[`base`](#structFileUtils_1_1PathComponents_1a3c7cb0f30b423ed8f85bac1cd020a79b) | Member filename with extension
+`public TString `[`name`](#structFileUtils_1_1PathComponents_1a21eddcf7c60f5d124365481e5fc97780) | Member filename only
+`public TString `[`extension`](#structFileUtils_1_1PathComponents_1ad83ab03d5481848e1fb98467713ee31d) | Member extension
 
 ## Members
 
 #### `public TString `[`path`](#structFileUtils_1_1PathComponents_1a7aca5f41d470ef816c2d9c4862bf7d0a) 
 
-Member 'path' contains absolute file path
+Member absolute file path
 
 #### `public TString `[`base`](#structFileUtils_1_1PathComponents_1a3c7cb0f30b423ed8f85bac1cd020a79b) 
 
-Member 'base' contains filename with extension
+Member filename with extension
 
 #### `public TString `[`name`](#structFileUtils_1_1PathComponents_1a21eddcf7c60f5d124365481e5fc97780) 
 
-Member 'name' contains filename only
+Member filename only
 
 #### `public TString `[`extension`](#structFileUtils_1_1PathComponents_1ad83ab03d5481848e1fb98467713ee31d) 
 
-Member 'extension' contains extension
+Member extension
 
 # namespace `FitUtils` 
 
@@ -144,14 +166,14 @@ March 2008
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public  `[`CrystalBallFunctionObject`](#classFitUtils_1_1CrystalBallFunctionObject_1a3a18a012c93b6490081594700a577d55)`(Bool_t _isInverted)` | 
-`public Double_t `[`operator()`](#classFitUtils_1_1CrystalBallFunctionObject_1a383100672628271c15d9413d6010350d)`(double * _x,double * par)` | 
+`public  `[`CrystalBallFunctionObject`](#classFitUtils_1_1CrystalBallFunctionObject_1a62e6f49f2f1e3954146e614d9243da31)`(Bool_t _isInverted)` | 
+`public Double_t `[`operator()`](#classFitUtils_1_1CrystalBallFunctionObject_1a959e5bb14bd74fe547278b23c5ee4e10)`(double * _x,double * par)` | 
 
 ## Members
 
-#### `public  `[`CrystalBallFunctionObject`](#classFitUtils_1_1CrystalBallFunctionObject_1a3a18a012c93b6490081594700a577d55)`(Bool_t _isInverted)` 
+#### `public  `[`CrystalBallFunctionObject`](#classFitUtils_1_1CrystalBallFunctionObject_1a62e6f49f2f1e3954146e614d9243da31)`(Bool_t _isInverted)` 
 
-#### `public Double_t `[`operator()`](#classFitUtils_1_1CrystalBallFunctionObject_1a383100672628271c15d9413d6010350d)`(double * _x,double * par)` 
+#### `public Double_t `[`operator()`](#classFitUtils_1_1CrystalBallFunctionObject_1a959e5bb14bd74fe547278b23c5ee4e10)`(double * _x,double * par)` 
 
 # namespace `HistUtils` 
 

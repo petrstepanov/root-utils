@@ -51,13 +51,53 @@ namespace FileUtils {
    */
   TTree* getTree(TFile* file, const char *treeName);
 
+  /**
+   * @brief Safely get a branch from a ROOT tree.
+   *
+   * Function will stop program execution if the branch is not found.
+   *
+   * @param tree pointer to the TTree.
+   * @return branchName name of the branch to be found.
+   */
   TBranch* getBranch(TTree* tree, const char *branchName);
 
+  /**
+   * @brief Get minimum value in a tree branch.
+   *
+   * @param tree pointer to the TTree.
+   * @return branchName name of the branch.
+   */
   Double_t getBranchMinimum(TTree *tree, const char *branchName);
 
+  /**
+   * @brief Get maximum value in a tree branch.
+   *
+   * @param tree pointer to the TTree.
+   * @return branchName name of the branch.
+   */
   Double_t getBranchMaximum(TTree *tree, const char *branchName);
 
-  Double_t getBranchMaximumInFiles(TList* files, const char* treeName, const char* branchName);
+  /**
+   * @brief Get minimum value in a tree branch across multiple files.
+   *
+   * Function is useful when simultaneously plotting a number of ROOT files with the same structure.
+   *
+   * @param filePaths list of filepaths to be opened (TObjStrings*).
+   * @param treeName name of the tree in the ROOT file.
+   * @return branchName name of the branch in the tree.
+   */
+  Double_t getBranchMinimumInFiles(TList* filePaths, const char* treeName, const char* branchName);
+
+  /**
+   * @brief Get maximum value in a tree branch across multiple files.
+   *
+   * Function is useful when simultaneously plotting a number of ROOT files with the same structure.
+   *
+   * @param filePaths list of filepaths to be opened (TObjStrings*).
+   * @param treeName name of the tree in the ROOT file.
+   * @return branchName name of the branch in the tree.
+   */
+  Double_t getBranchMaximumInFiles(TList* filePaths, const char* treeName, const char* branchName);
 
   /**
    * @brief Shortcut to get a histogram from ROOT tree branch.
@@ -72,19 +112,19 @@ namespace FileUtils {
   TH1* getBranchHistogram(TTree *tree, const char *branchName, Int_t nBins=150);
 
   /** @struct PathComponents
-   *  @brief This structure contains parsed file path components
+   *  @brief Struct contains path components returned by the parseFilePath() method
    */
   /** @var PathComponents::path
-   *  Member 'path' contains absolute file path
+   *  Absolute path
    */
   /** @var PathComponents::base
-   *  Member 'base' contains filename with extension
+   *  Filename with extension
    */
   /** @var PathComponents::name
-   *  Member 'name' contains filename only
+   *  Filename only
    */
   /** @var PathComponents::extension
-   *  Member 'extension' contains extension
+   *  Extension
    */
   struct PathComponents {
       TString path;
