@@ -26,7 +26,7 @@ var NAVTREE =
 [
   [ "RootUtils", "index.html", [
     [ "ROOT Utils", "index.html", [
-      [ "Installation with CMake • Preferred", "index.html#autotoc_md60", [
+      [ "Installation with CMake", "index.html#autotoc_md60", [
         [ "BASH Shell", "index.html#autotoc_md61", null ],
         [ "CSH-Based Shells", "index.html#autotoc_md62", null ]
       ] ]
