@@ -4,11 +4,24 @@
 #include <TList.h>
 #include <TH1.h>
 
+/** @struct EnergyValueUnit
+ *  @brief Struct contains energy value (Double_t) with corresponding unit (TString)
+ */
+/** @var EnergyValueUnit::value
+ *  Double value
+ */
+/** @var EnergyValueUnit::unit
+ *  String unit
+ */
+struct EnergyValueUnit {
+    Double_t value;
+    TString unit;
+};
+
 /**
  * @namespace StringUtils
  * Useful string operations.
  */
-
 namespace StringUtils {
   /**
    * @brief Remove extension from a file path.
@@ -26,6 +39,13 @@ namespace StringUtils {
    */
   void writeProgress(const char *message, Int_t nTimes);
 
+  /**
+   * @brief Format energy to appropriate unit. Function outputs EnergyValueUnit structure containing energy value converted to the best unit for presenting - TeV, GeV, .. eV.
+   *
+   * @param value Energy value in default Geant4 unit - MeV.
+   * @return EnergyValueUnit Structure containing value (double) and unit (std::string).
+   */
+  EnergyValueUnit formatEnergy(Double_t value);
 }
 
 #endif

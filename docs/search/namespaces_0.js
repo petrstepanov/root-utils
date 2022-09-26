@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['fileutils_33',['FileUtils',['../namespaceFileUtils.html',1,'']]],
-  ['fitutils_34',['FitUtils',['../namespaceFitUtils.html',1,'']]]
+  ['fileutils_40',['FileUtils',['../namespaceFileUtils.html',1,'']]],
+  ['fitutils_41',['FitUtils',['../namespaceFitUtils.html',1,'']]]
 ];

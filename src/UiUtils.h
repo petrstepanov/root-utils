@@ -21,6 +21,16 @@ namespace UiUtils {
   void showMessageBox(const char *text, const char *title = "", EMsgBoxIcon icon = EMsgBoxIcon::kMBIconAsterisk);
 
   /**
+   * @brief Displays ROOT message question box with "Yes" and "No" buttons.
+   *
+   * @param text Message box text.
+   * @param title Optional message box title.
+   * @param icon Optional message box icon.*
+   * @return Pressed button bit, EMsgBoxButton::kMBNo or EMsgBoxButton::kMBYes.
+   */
+  Int_t showMessageBoxYesNo(const char *text, const char *title = "", EMsgBoxIcon icon = EMsgBoxIcon::kMBIconQuestion);
+
+  /**
    * @brief File picker dialog.
    *
    * Returns list of TObjStrings containing selected file paths.

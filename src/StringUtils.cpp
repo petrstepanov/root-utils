@@ -36,3 +36,34 @@ void StringUtils::writeProgress(const char *s, Int_t nTimes) {
     std::cout << ", done." << std::endl;
   }
 }
+
+EnergyValueUnit StringUtils::formatEnergy(Double_t value) {
+  EnergyValueUnit evu;
+  if (value >= 1E6) {
+    evu.unit = "TeV";
+    evu.value = value / 1E6;
+    return evu;
+  }
+  if (value >= 1E3) {
+    evu.unit = "GeV";
+    evu.value = value / 1E3;
+    return evu;
+  }
+  if (value >= 1) {
+    evu.unit = "MeV";
+    evu.value = value;
+    return evu;
+  }
+  if (value >= 1E-3) {
+    evu.unit = "keV";
+    evu.value = value*1E3;
+    return evu;
+  }
+  evu.unit = "eV";
+  evu.value = value*1E6;
+  return evu;
+}
+
+std::ostream &operator<<(std::ostream &os, EnergyValueUnit const &evu) {
+    return os << evu.value << " " << evu.unit;
+}

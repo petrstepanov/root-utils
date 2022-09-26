@@ -98,10 +98,40 @@ Functions</h2></td></tr>
 <tr class="memitem:ac620ee5e663e087cba3221f054c8e769"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceStringUtils.html#ac620ee5e663e087cba3221f054c8e769">writeProgress</a> (const char *message, Int_t nTimes)</td></tr>
 <tr class="memdesc:ac620ee5e663e087cba3221f054c8e769"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple implementation of an ASCII progress bar.  <a href="namespaceStringUtils.html#ac620ee5e663e087cba3221f054c8e769">More...</a><br /></td></tr>
 <tr class="separator:ac620ee5e663e087cba3221f054c8e769"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6f13ec513feb9361dcfef6a6d1b8b56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structEnergyValueUnit.html">EnergyValueUnit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceStringUtils.html#aa6f13ec513feb9361dcfef6a6d1b8b56">formatEnergy</a> (Double_t value)</td></tr>
+<tr class="memdesc:aa6f13ec513feb9361dcfef6a6d1b8b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Format energy to appropriate unit. Function outputs <a class="el" href="structEnergyValueUnit.html" title="Struct contains energy value (Double_t) with corresponding unit (TString)">EnergyValueUnit</a> structure containing energy value converted to the best unit for presenting - TeV, GeV, .. eV.  <a href="namespaceStringUtils.html#aa6f13ec513feb9361dcfef6a6d1b8b56">More...</a><br /></td></tr>
+<tr class="separator:aa6f13ec513feb9361dcfef6a6d1b8b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Useful string operations. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="aa6f13ec513feb9361dcfef6a6d1b8b56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6f13ec513feb9361dcfef6a6d1b8b56">&#9670;&nbsp;</a></span>formatEnergy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structEnergyValueUnit.html">EnergyValueUnit</a> StringUtils::formatEnergy </td>
+          <td>(</td>
+          <td class="paramtype">Double_t&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Format energy to appropriate unit. Function outputs <a class="el" href="structEnergyValueUnit.html" title="Struct contains energy value (Double_t) with corresponding unit (TString)">EnergyValueUnit</a> structure containing energy value converted to the best unit for presenting - TeV, GeV, .. eV. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Energy value in default Geant4 unit - MeV. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structEnergyValueUnit.html" title="Struct contains energy value (Double_t) with corresponding unit (TString)">EnergyValueUnit</a> Structure containing value (double) and unit (std::string). </dd></dl>
+
+</div>
+</div>
 <a id="a22bd0840ba5f9095db85dc49045e25fc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a22bd0840ba5f9095db85dc49045e25fc">&#9670;&nbsp;</a></span>stripExtension()</h2>
 

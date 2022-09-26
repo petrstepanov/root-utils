@@ -9,6 +9,8 @@
 
 // STD includes
 #include <limits>
+#include <iomanip>
+#include <fstream>
 
 using namespace FileUtils;
 
@@ -194,4 +196,45 @@ TH1* FileUtils::getBranchHistogram(TTree *tree, const char *branchName, Int_t nB
   tree->Draw(drawOption, "", "goff");
 
   return hist;
+}
+
+Int_t FileUtils::exportValuesToGnuplot(TString filename, std::vector<std::string> colNames, std::vector<double> values,
+  const char *delimeter) {
+  std::ofstream myfile;
+  Bool_t fileExisted = kFALSE;
+  if (gSystem->AccessPathName(filename, EAccessMode::kFileExists)) {
+    // File not exists
+    myfile.open(filename);
+  } else {
+    // File exists
+    myfile.open(filename, std::ios_base::app);
+    fileExisted = kTRUE;
+  }
+  // Check file opened successfully
+  if (!myfile.is_open()) {
+    Error("exportPointToGnuplot()", "Cannot create \"%s\"", filename.Data());
+    return 1;
+  }
+
+  // Minimum  column width
+  int minAsciiColWidth = 10;
+
+  // Write header if file was not existing before
+  if (!fileExisted) {
+    myfile << "# ";
+    for (std::string colName : colNames) {
+      myfile << std::setw(std::max(minAsciiColWidth, (int) colName.length())) << colName << delimeter;
+    }
+    myfile << std::endl;
+  }
+
+  // Write data
+  myfile << "  ";
+  int i = 0;
+  for (double value : values) {
+    myfile << std::setw(std::max(minAsciiColWidth, (int) colNames[i++].length())) << value << delimeter;
+  }
+
+  myfile.close();
+  return 0;
 }

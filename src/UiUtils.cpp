@@ -12,11 +12,20 @@
 
 using namespace UiUtils;
 
-void UiUtils::showMessageBox(const char *text, const char *title, EMsgBoxIcon icon){
-  if (strlen(title) == 0){
+void UiUtils::showMessageBox(const char *text, const char *title, EMsgBoxIcon icon) {
+  if (strlen(title) == 0) {
     title = gApplication->GetTitle();
   }
   new TGMsgBox(gClient->GetRoot(), NULL, title, text, icon, EMsgBoxButton::kMBOk);
+}
+
+Int_t UiUtils::showMessageBoxYesNo(const char *text, const char *title, EMsgBoxIcon icon) {
+  if (strlen(title) == 0) {
+    title = gApplication->GetTitle();
+  }
+  int ret = EMsgBoxButton::kMBNo;
+  new TGMsgBox(gClient->GetRoot(), NULL, title, text, icon, EMsgBoxButton::kMBYes | EMsgBoxButton::kMBNo, &ret);
+  return ret;
 }
 
 TList* UiUtils::getFilePaths(Bool_t isMultiple) {

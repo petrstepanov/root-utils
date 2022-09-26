@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['parsefilepath_52',['parseFilePath',['../namespaceFileUtils.html#a6c7da44223cc4a1f99f2ec73a3d3c80f',1,'FileUtils']]]
+  ['openfile_60',['openFile',['../namespaceFileUtils.html#a34ac56b2e27b16a4f39c7562083f7967',1,'FileUtils']]]
 ];

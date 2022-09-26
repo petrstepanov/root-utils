@@ -9,11 +9,13 @@ var namespaces_dup =
       [ "invertHist", "namespaceHistUtils.html#a17dac3a36429bbccbc9b7a67d8fb7ea6", null ]
     ] ],
     [ "StringUtils", "namespaceStringUtils.html", [
+      [ "formatEnergy", "namespaceStringUtils.html#aa6f13ec513feb9361dcfef6a6d1b8b56", null ],
       [ "stripExtension", "namespaceStringUtils.html#a22bd0840ba5f9095db85dc49045e25fc", null ],
       [ "writeProgress", "namespaceStringUtils.html#ac620ee5e663e087cba3221f054c8e769", null ]
     ] ],
     [ "UiUtils", "namespaceUiUtils.html", [
       [ "getFilePaths", "namespaceUiUtils.html#a5c2ffeeabf99da58a67e18299bbdea70", null ],
-      [ "showMessageBox", "namespaceUiUtils.html#af65af35889d3ce807ecd2576a48b7983", null ]
+      [ "showMessageBox", "namespaceUiUtils.html#af65af35889d3ce807ecd2576a48b7983", null ],
+      [ "showMessageBoxYesNo", "namespaceUiUtils.html#a3addb1c0194a01f3f3967830e8674908", null ]
     ] ]
 ];

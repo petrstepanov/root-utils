@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['openfile_51',['openFile',['../namespaceFileUtils.html#a34ac56b2e27b16a4f39c7562083f7967',1,'FileUtils']]]
+  ['inverthist_59',['invertHist',['../namespaceHistUtils.html#a17dac3a36429bbccbc9b7a67d8fb7ea6',1,'HistUtils']]]
 ];

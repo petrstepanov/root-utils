@@ -95,6 +95,9 @@ Functions</h2></td></tr>
 <tr class="memitem:af65af35889d3ce807ecd2576a48b7983"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUiUtils.html#af65af35889d3ce807ecd2576a48b7983">showMessageBox</a> (const char *text, const char *title=&quot;&quot;, EMsgBoxIcon icon=EMsgBoxIcon::kMBIconAsterisk)</td></tr>
 <tr class="memdesc:af65af35889d3ce807ecd2576a48b7983"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays ROOT message box with OK button.  <a href="namespaceUiUtils.html#af65af35889d3ce807ecd2576a48b7983">More...</a><br /></td></tr>
 <tr class="separator:af65af35889d3ce807ecd2576a48b7983"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3addb1c0194a01f3f3967830e8674908"><td class="memItemLeft" align="right" valign="top">Int_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUiUtils.html#a3addb1c0194a01f3f3967830e8674908">showMessageBoxYesNo</a> (const char *text, const char *title=&quot;&quot;, EMsgBoxIcon icon=EMsgBoxIcon::kMBIconQuestion)</td></tr>
+<tr class="memdesc:a3addb1c0194a01f3f3967830e8674908"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays ROOT message question box with "Yes" and "No" buttons.  <a href="namespaceUiUtils.html#a3addb1c0194a01f3f3967830e8674908">More...</a><br /></td></tr>
+<tr class="separator:a3addb1c0194a01f3f3967830e8674908"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c2ffeeabf99da58a67e18299bbdea70"><td class="memItemLeft" align="right" valign="top">TList *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUiUtils.html#a5c2ffeeabf99da58a67e18299bbdea70">getFilePaths</a> (Bool_t isMultiple=kTRUE)</td></tr>
 <tr class="memdesc:a5c2ffeeabf99da58a67e18299bbdea70"><td class="mdescLeft">&#160;</td><td class="mdescRight">File picker dialog.  <a href="namespaceUiUtils.html#a5c2ffeeabf99da58a67e18299bbdea70">More...</a><br /></td></tr>
 <tr class="separator:a5c2ffeeabf99da58a67e18299bbdea70"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -173,6 +176,51 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>TList* of TObjString* with full absolute paths. </dd></dl>
+
+</div>
+</div>
+<a id="a3addb1c0194a01f3f3967830e8674908"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3addb1c0194a01f3f3967830e8674908">&#9670;&nbsp;</a></span>showMessageBoxYesNo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Int_t UiUtils::showMessageBoxYesNo </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>title</em> = <code>&quot;&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">EMsgBoxIcon&#160;</td>
+          <td class="paramname"><em>icon</em> = <code>EMsgBoxIcon::kMBIconQuestion</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Displays ROOT message question box with "Yes" and "No" buttons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>Message box text. </td></tr>
+    <tr><td class="paramname">title</td><td>Optional message box title. </td></tr>
+    <tr><td class="paramname">icon</td><td>Optional message box icon.* </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pressed button bit, EMsgBoxButton::kMBNo or EMsgBoxButton::kMBYes. </dd></dl>
 
 </div>
 </div>

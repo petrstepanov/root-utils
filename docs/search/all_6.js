@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['inverthist_18',['invertHist',['../namespaceHistUtils.html#a17dac3a36429bbccbc9b7a67d8fb7ea6',1,'HistUtils']]]
+  ['inverthist_21',['invertHist',['../namespaceHistUtils.html#a17dac3a36429bbccbc9b7a67d8fb7ea6',1,'HistUtils']]]
 ];

@@ -140,6 +140,19 @@ namespace FileUtils {
    * @return PathComponents struct with path components.
    */
   PathComponents parseFilePath(const char *filePathName);
+
+  /**
+   * @brief Append or save data to a Gnuplot file.
+   *
+   * Function creates a new or opens existing ASCII file. Next, it appends a line of values to the file.
+   *
+   * @param filename absolute file path.
+   * @param colNames vector of strings with column names.
+   * @param colNames vector of doubles with row values.
+   * @param delimeter column delimeter (default "   ").
+   * @return 0 if success, 1 if error.
+   */
+  Int_t exportValuesToGnuplot(TString filename, std::vector<std::string> colNames, std::vector<double> values, const char* delimeter="   ");
 }
 
 #endif
