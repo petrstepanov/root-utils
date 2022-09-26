@@ -4,6 +4,11 @@
 #include <TList.h>
 #include <TGMsgBox.h>
 
+/**
+ * @namespace UiUtils
+ * Various ROOT GUI shortcuts such as message box, file picker.
+ */
+
 namespace UiUtils {
   /**
    * @brief Displays ROOT message box with OK button.
@@ -24,7 +29,7 @@ namespace UiUtils {
    * @param title Optional message to be displayed in a Message Box prior to the file picker.
    * @return TList* of TObjString* with full absolute paths.
    */
-  TList* getFilePaths(Bool_t isMultiple = kTRUE, const char* message = "");
+  TList* getFilePaths(Bool_t isMultiple = kTRUE);
 }
 
 #endif

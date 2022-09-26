@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['openfile_13',['openFile',['../namespaceFileUtils.html#a34ac56b2e27b16a4f39c7562083f7967',1,'FileUtils']]]
+  ['histutils_17',['HistUtils',['../namespaceHistUtils.html',1,'']]]
 ];

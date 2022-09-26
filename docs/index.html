@@ -88,22 +88,55 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a></p>
-<p>Shared library for ROOT framework containing list of common functions. Api reference is published here: <a href="https://github.com/petrstepanov/root-utils/blob/master/api.md">https://github.com/petrstepanov/root-utils/blob/master/api.md</a></p>
+<p>🏠️ Project homepage: <a href="https://petrstepanov.com/root-utils">https://petrstepanov.com/root-utils</a></p>
+<p>🐱 Github repository: <a href="https://github.com/petrstepanov/root-utils">https://github.com/petrstepanov/root-utils</a></p>
+<p>Shared library for ROOT framework containing list of common functions we use in multiple projects. Library is developed in order to reduce the codebase bloating of each particular ROOT-based program.</p>
+<ul>
+<li><b><a class="el" href="namespaceFileUtils.html">FileUtils</a></b> has shortcuts for opening series of ROOT files in a directory.</li>
+<li><b><a class="el" href="namespaceFitUtils.html">FitUtils</a></b> has implementation of a Crystal Ball function. Regular and reversed.</li>
+<li><b><a class="el" href="namespaceHistUtils.html">HistUtils</a></b> provides easy to access histogram operations: invert, crop etc...</li>
+<li><b><a class="el" href="namespaceStringUtils.html">StringUtils</a></b> will have common string operations: remove extension, print ASCII progress bar.</li>
+<li><b><a class="el" href="namespaceUiUtils.html">UiUtils</a></b> has a wrapper for the ROOT message box and file picker.</li>
+</ul>
+<p>Below please find an exemple of fitting a histogram with the Crystal Ball function:</p>
+<div class="fragment"><div class="line">#include&lt;FitUtils.h&gt;</div>
+<div class="line">...</div>
+<div class="line">TF1 *cBall = FitUtils::getCrystalBallFunction(hist);                   // Regular Crystal Ball function</div>
+<div class="line">TF1 *cBallReversed = FitUtils::getCrystalBallFunction(hist, kTRUE);    // Reversed Crystal Ball</div>
+<div class="line"> </div>
+<div class="line">hist-&gt;Fit(cBall);</div>
+</div><!-- fragment --><p align="center"></p>
+<p><img src="https://raw.githubusercontent.com/petrstepanov/root-utils/main/resources/crystal-ball-fit.png" alt="Fitting ROOT histograms with Crystal Ball function" width="85%" class="inline"/> </p>
+<p>Library namespaces documentation can be found here: <a href="https://petrstepanov.com/root-utils/namespaces.html">https://petrstepanov.com/root-utils/namespaces.html</a></p>
 <h1><a class="anchor" id="autotoc_md60"></a>
-How to Install</h1>
-<p>Library supports integration into ROOT framework installed locally and globally. First, check out the repository in desired location:</p>
+Installation with CMake • Preferred</h1>
+<p>This is the preferred installation option. Installation depends on prerequisites:</p><ul>
+<li>Have <code>cmake</code> version 3.XX program installed on computer. Usually CMake is included in Linux "Development Tools" group package. On older distributions CMake v3.XX may be named <code>cmake3</code>.</li>
+<li>ROOT environment should be sourced in the current shell. Tested with ROOT v6.26.XX.</li>
+</ul>
+<p>First we download the repository and create an out-of-source build folder.</p>
 <div class="fragment"><div class="line">mkdir -p ~/Downloads &amp;&amp; cd ~/Downloads</div>
 <div class="line">git clone https://github.com/petrstepanov/root-utils</div>
-<div class="line">mkdir ./root-utils-build &amp;&amp; cd ./root-utils-build</div>
-</div><!-- fragment --><p>By default, library will be installed inside the ROOT library install folders</p>
+<div class="line">mkdir -p ./root-utils-build &amp;&amp; cd ./root-utils-build</div>
+</div><!-- fragment --><p>Next we invoke CMake. It ensures that all the dependencies are satisfied and generates GNU <code>Makefile</code>. Finally, we execute Makefile's <code>install</code> target:</p>
+<div class="fragment"><div class="line">cmake ../root-utils</div>
+<div class="line">cmake --build . --target install</div>
+</div><!-- fragment --><p>Makefile generates dictionary, builds shared libaray, compiles code into object files, links the executable, and installs corresponding files files in required locations.</p>
+<p><b>Tip</b>. If above command requires administrator privilleges that current user does not have, the install prefix can be changed to a local install:</p>
+<div class="fragment"><div class="line">cmake -DCMAKE_INSTALL_PREFIX=$HOME/.local ../root-utils</div>
+<div class="line">cmake --build . --target install</div>
+</div><!-- fragment --><p>Additionally, <code>$PATH</code>, <code>$LD_LIBRARY_PATH</code>, and <code>$CPLUS_INCLUDE_PATH</code> environemnt variables need to be modified for the library to be discoverable. Below please find an example how to do it in BASH and CSH shells:</p>
 <h2><a class="anchor" id="autotoc_md61"></a>
-Global install</h2>
-<p>This option</p>
-<h2><a class="anchor" id="autotoc_md62"></a>
-Local install</h2>
-<p>This option should be used when user does not have write permissions to the ROOT folders. It is best for use on the supercomputer environment.</p>
-<h1><a class="anchor" id="autotoc_md63"></a>
-How to use in Development Environment</h1>
+BASH Shell</h2>
+<div class="fragment"><div class="line">echo &quot;export PATH=$HOME/.local/bin:$PATH&quot; &gt;&gt; $HOME/.bashrc</div>
+<div class="line">echo &quot;export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH&quot; &gt;&gt; $HOME/.bashrc</div>
+<div class="line">echo &quot;export CPLUS_INCLUDE_PATH=$HOME/.local/include:$CPLUS_INCLUDE_PATH&quot; &gt;&gt; $HOME/.bashrc</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md62"></a>
+CSH-Based Shells</h2>
+<div class="fragment"><div class="line">echo &quot;setenv PATH $HOME/.local/bin:$PATH&quot; &gt;&gt; $HOME/.cshrc</div>
+<div class="line">echo &quot;setenv LD_LIBRARY_PATH $HOME/.local/lib:$LD_LIBRARY_PATH&quot; &gt;&gt; $HOME/.cshrc</div>
+<div class="line">echo &quot;setenv CPLUS_INCLUDE_PATH $HOME/.local/include:$CPLUS_INCLUDE_PATH&quot; &gt;&gt; $HOME/.cshrc</div>
+</div><!-- fragment --><p>This should do the trick. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

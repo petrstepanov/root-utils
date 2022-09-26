@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pathcomponents_19',['PathComponents',['../structFileUtils_1_1PathComponents.html',1,'FileUtils']]]
+  ['crystalballfunctionobject_31',['CrystalBallFunctionObject',['../classFitUtils_1_1CrystalBallFunctionObject.html',1,'FitUtils']]]
 ];

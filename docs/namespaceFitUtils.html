@@ -83,18 +83,68 @@ $(document).ready(function(){initNavTree('namespaceFitUtils.html',''); initResiz
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">FitUtils Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Utility namespace for ROOT files.  
-<a href="namespaceFitUtils.html#details">More...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFitUtils_1_1CrystalBallFunctionObject.html">CrystalBallFunctionObject</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a82ac01cf47da339477fa1dfa53d4df22"><td class="memItemLeft" align="right" valign="top">TF1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFitUtils.html#a82ac01cf47da339477fa1dfa53d4df22">getCrystalBallFunction</a> (TH1 *hist, Bool_t reversed=kFALSE)</td></tr>
+<tr class="memdesc:a82ac01cf47da339477fa1dfa53d4df22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain a CrystalBall fitting function based on a given histogram.  <a href="namespaceFitUtils.html#a82ac01cf47da339477fa1dfa53d4df22">More...</a><br /></td></tr>
+<tr class="separator:a82ac01cf47da339477fa1dfa53d4df22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Utility namespace for ROOT files. </p>
-<p>Detailed description follows here. </p><dl class="section author"><dt>Author</dt><dd>X. XYZ, DESY </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>March 2008 </dd></dl>
-</div></div><!-- contents -->
+<div class="textblock"><p>Implementation of a Crystal Ball function in ROOT. Supports regular and reversed crystal ball functions. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a82ac01cf47da339477fa1dfa53d4df22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82ac01cf47da339477fa1dfa53d4df22">&#9670;&nbsp;</a></span>getCrystalBallFunction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TF1 * FitUtils::getCrystalBallFunction </td>
+          <td>(</td>
+          <td class="paramtype">TH1 *&#160;</td>
+          <td class="paramname"><em>hist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Bool_t&#160;</td>
+          <td class="paramname"><em>reversed</em> = <code>kFALSE</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtain a CrystalBall fitting function based on a given histogram. </p>
+<p>Function sets corresponding Crystal GBall function parameters based on the shape of the histogram. User can immediately do the fit.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hist</td><td>histogram to be fitted. </td></tr>
+    <tr><td class="paramname">reversed</td><td>set if Crystal Ball function is reversed or not. Default is kFALSE. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ROOT function ready for fitting. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

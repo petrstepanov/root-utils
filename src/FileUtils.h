@@ -1,10 +1,3 @@
-/** @brief Utility namespace for ROOT files
-
- Detailed description follows here.
- @author X. XYZ, DESY
- @date March 2008
- */
-
 #ifndef FileUtils_hh
 #define FileUtils_hh 1
 
@@ -16,6 +9,11 @@
 #include <TTree.h>
 #include <TBranch.h>
 #include <vector>
+
+/**
+ * @namespace FileUtils
+ * Contains useful functions for ROOT file manipulation.
+ */
 
 namespace FileUtils {
 

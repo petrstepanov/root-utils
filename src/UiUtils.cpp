@@ -12,19 +12,14 @@
 
 using namespace UiUtils;
 
-void UiUtils::showMessageBox(const char *text, const char *title, EMsgBoxIcon icon = EMsgBoxIcon::kMBIconAsterisk){
+void UiUtils::showMessageBox(const char *text, const char *title, EMsgBoxIcon icon){
   if (strlen(title) == 0){
     title = gApplication->GetTitle();
   }
   new TGMsgBox(gClient->GetRoot(), NULL, title, text, icon, EMsgBoxButton::kMBOk);
 }
 
-TList* UiUtils::getFilePaths(Bool_t isMultiple, const char* message) {
-  // Show information message box
-  if (strlen(message)) {
-    showMessageBox(message, "Open Files");
-  }
-
+TList* UiUtils::getFilePaths(Bool_t isMultiple) {
   // Show file picker
   const char *filetypes[] = { "All files", "*", "ROOT files", "*.root", 0, 0 };
   TGFileInfo fi;

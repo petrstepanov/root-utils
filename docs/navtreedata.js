@@ -26,11 +26,10 @@ var NAVTREE =
 [
   [ "RootUtils", "index.html", [
     [ "ROOT Utils", "index.html", [
-      [ "How to Install", "index.html#autotoc_md60", [
-        [ "Global install", "index.html#autotoc_md61", null ],
-        [ "Local install", "index.html#autotoc_md62", null ]
-      ] ],
-      [ "How to use in Development Environment", "index.html#autotoc_md63", null ]
+      [ "Installation with CMake • Preferred", "index.html#autotoc_md60", [
+        [ "BASH Shell", "index.html#autotoc_md61", null ],
+        [ "CSH-Based Shells", "index.html#autotoc_md62", null ]
+      ] ]
     ] ],
     [ "Summary", "md_api.html", [
       [ "namespace <tt>FileUtils</tt>", "md_api.html#autotoc_md1", [

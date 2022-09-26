@@ -51,15 +51,15 @@ Double_t FitUtils::CrystalBallFunctionObject::operator()(double *_x, double *par
 
 using namespace FitUtils;
 
-TF1* FitUtils::fitHistWithROOTCrystalBall(TH1 *hist, Bool_t inverted) {
-  Double_t minX = hist->GetXaxis()->GetBinLowEdge(hist->GetXaxis()->GetFirst());
-  Double_t maxX = hist->GetXaxis()->GetBinUpEdge(hist->GetXaxis()->GetLast());
-  TF1 *f = new TF1("fBallRoot", "crystalballn", minX, maxX);
-
-  f->SetParameters(inverted ? -1 : 1, 3, hist->GetBinCenter(hist->GetMaximumBin()), hist->GetRMS() / 10);
-  // hist->Fit(f);
-  return f;
-}
+//TF1* FitUtils::fitHistWithROOTCrystalBall(TH1 *hist, Bool_t inverted) {
+//  Double_t minX = hist->GetXaxis()->GetBinLowEdge(hist->GetXaxis()->GetFirst());
+//  Double_t maxX = hist->GetXaxis()->GetBinUpEdge(hist->GetXaxis()->GetLast());
+//  TF1 *f = new TF1("fBallRoot", "crystalball", minX, maxX);
+//
+//  f->SetParameters(inverted ? -1 : 1, 3, hist->GetBinCenter(hist->GetMaximumBin()), hist->GetRMS() / 10);
+//  // hist->Fit(f);
+//  return f;
+//}
 
 TF1* FitUtils::getCrystalBallFunction(TH1 *hist, Bool_t reversed) {
   TF1 *fBall = new TF1();

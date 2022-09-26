@@ -5,6 +5,11 @@
 #include <TList.h>
 #include <TTree.h>
 
+/**
+ * @namespace HistUtils
+ * Useful histogram operations.
+ */
+
 namespace HistUtils {
   /**
    * @brief Get histogram mean value along Y axis.

@@ -4,6 +4,11 @@
 #include <TList.h>
 #include <TH1.h>
 
+/**
+ * @namespace StringUtils
+ * Useful string operations.
+ */
+
 namespace StringUtils {
   /**
    * @brief Remove extension from a file path.

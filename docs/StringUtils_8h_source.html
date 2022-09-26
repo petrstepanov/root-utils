@@ -93,18 +93,17 @@ $(document).ready(function(){initNavTree('StringUtils_8h_source.html',''); initR
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;TList.h&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;TH1.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>StringUtils {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="comment">// Extract filename from path</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    TString stripExtension(<span class="keyword">const</span> <span class="keywordtype">char</span> *str);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="comment">// TODO: move to some IO utils?</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">void</span> writeProgress(<span class="keyword">const</span> <span class="keywordtype">char</span>* s, Int_t nTimes);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">//    void writeRewind(const char* s);</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//    void writeRewindEnd();</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceStringUtils.html">StringUtils</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  TString <a class="code" href="namespaceStringUtils.html#a22bd0840ba5f9095db85dc49045e25fc">stripExtension</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *path);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespaceStringUtils.html#ac620ee5e663e087cba3221f054c8e769">writeProgress</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *message, Int_t nTimes);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="anamespaceStringUtils_html"><div class="ttname"><a href="namespaceStringUtils.html">StringUtils</a></div><div class="ttdef"><b>Definition:</b> RootUtils.cxx:130</div></div>
+<div class="ttc" id="anamespaceStringUtils_html_a22bd0840ba5f9095db85dc49045e25fc"><div class="ttname"><a href="namespaceStringUtils.html#a22bd0840ba5f9095db85dc49045e25fc">StringUtils::stripExtension</a></div><div class="ttdeci">TString stripExtension(const char *path)</div><div class="ttdoc">Remove extension from a file path.</div><div class="ttdef"><b>Definition:</b> StringUtils.cpp:14</div></div>
+<div class="ttc" id="anamespaceStringUtils_html_ac620ee5e663e087cba3221f054c8e769"><div class="ttname"><a href="namespaceStringUtils.html#ac620ee5e663e087cba3221f054c8e769">StringUtils::writeProgress</a></div><div class="ttdeci">void writeProgress(const char *message, Int_t nTimes)</div><div class="ttdoc">Simple implementation of an ASCII progress bar.</div><div class="ttdef"><b>Definition:</b> StringUtils.cpp:26</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

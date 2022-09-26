@@ -87,30 +87,32 @@ $(document).ready(function(){initNavTree('FitUtils_8h_source.html',''); initResi
 <div class="title">FitUtils.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef FitUtils_hh</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define FitUtils_hh 1</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;RtypesCore.h&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;TF1.h&gt;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef FitUtils_hh</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define FitUtils_hh 1</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;RtypesCore.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;TF1.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceFitUtils.html">FitUtils</a> {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceFitUtils.html">FitUtils</a> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keyword">class </span>CrystalBallFunctionObject {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;      CrystalBallFunctionObject(Bool_t _isInverted = kFALSE);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;      Double_t operator()(<span class="keywordtype">double</span> *_x, <span class="keywordtype">double</span> *par);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;      Bool_t isReversed;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  };</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  TF1* fitHistWithROOTCrystalBall(TH1 *hist, Bool_t inverted);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  TF1* getCrystalBallFunction(TH1 *hist, Bool_t reversed = kFALSE);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="anamespaceFitUtils_html"><div class="ttname"><a href="namespaceFitUtils.html">FitUtils</a></div><div class="ttdoc">Utility namespace for ROOT files.</div><div class="ttdef"><b>Definition:</b> RootUtils.cxx:76</div></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classFitUtils_1_1CrystalBallFunctionObject.html">   18</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classFitUtils_1_1CrystalBallFunctionObject.html">CrystalBallFunctionObject</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;      <a class="code" href="classFitUtils_1_1CrystalBallFunctionObject.html">CrystalBallFunctionObject</a>(Bool_t _isInverted = kFALSE);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;      Double_t operator()(<span class="keywordtype">double</span> *_x, <span class="keywordtype">double</span> *par);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;      Bool_t isReversed;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  };</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  TF1* <a class="code" href="namespaceFitUtils.html#a82ac01cf47da339477fa1dfa53d4df22">getCrystalBallFunction</a>(TH1 *hist, Bool_t reversed = kFALSE);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="comment">// TF1* fitHistWithROOTCrystalBall(TH1 *hist, Bool_t inverted);</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassFitUtils_1_1CrystalBallFunctionObject_html"><div class="ttname"><a href="classFitUtils_1_1CrystalBallFunctionObject.html">FitUtils::CrystalBallFunctionObject</a></div><div class="ttdef"><b>Definition:</b> FitUtils.h:18</div></div>
+<div class="ttc" id="anamespaceFitUtils_html"><div class="ttname"><a href="namespaceFitUtils.html">FitUtils</a></div><div class="ttdef"><b>Definition:</b> RootUtils.cxx:76</div></div>
+<div class="ttc" id="anamespaceFitUtils_html_a82ac01cf47da339477fa1dfa53d4df22"><div class="ttname"><a href="namespaceFitUtils.html#a82ac01cf47da339477fa1dfa53d4df22">FitUtils::getCrystalBallFunction</a></div><div class="ttdeci">TF1 * getCrystalBallFunction(TH1 *hist, Bool_t reversed=kFALSE)</div><div class="ttdoc">Obtain a CrystalBall fitting function based on a given histogram.</div><div class="ttdef"><b>Definition:</b> FitUtils.cpp:64</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
