@@ -16,7 +16,7 @@ Shared library for ROOT framework containing list of common functions we use in 
 Below please find an exemple of fitting a histogram with the Crystal Ball function:
 
 ```
-#include<FitUtils.h>
+#include <FitUtils.h>
 ...
 
 // Regular Crystal Ball function
@@ -34,8 +34,8 @@ hist->Fit(cBall);
 
 Library namespaces documentation can be found here: https://petrstepanov.com/root-utils/namespaces.html
 
-Installation with CMake • Preferred
------------------------------------
+Installation with CMake
+-----------------------
 
 This is the preferred installation option. Installation depends on prerequisites:
 * Have `cmake` version 3.XX program installed on computer. Usually CMake is included in Linux "Development Tools" group package. On older distributions CMake v3.XX may be named `cmake3`.
