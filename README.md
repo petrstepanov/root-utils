@@ -25,7 +25,7 @@ hist->Fit(cBall);
 ```
 
 <p align="center">
-  <img width="85%" src="https://raw.githubusercontent.com/petrstepanov/root-utils/main/resources/crystal-ball-fit.png" alt="Fitting ROOT histograms with Crystal Ball function" />
+  <img width="85%" src="https://raw.githubusercontent.com/petrstepanov/root-utils/master/resources/crystal-ball-fit.png" alt="Fitting ROOT histograms with Crystal Ball function" />
 </p>
 
 Library namespaces documentation can be found here: https://petrstepanov.com/root-utils/namespaces.html
