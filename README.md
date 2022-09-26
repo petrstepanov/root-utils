@@ -18,8 +18,12 @@ Below please find an exemple of fitting a histogram with the Crystal Ball functi
 ```
 #include<FitUtils.h>
 ...
-TF1 *cBall = FitUtils::getCrystalBallFunction(hist);                   // Regular Crystal Ball function
-TF1 *cBallReversed = FitUtils::getCrystalBallFunction(hist, kTRUE);    // Reversed Crystal Ball
+
+// Regular Crystal Ball function
+TF1 *cBall = FitUtils::getCrystalBallFunction(hist);
+
+// Reversed Crystal Ball function
+TF1 *cBallReversed = FitUtils::getCrystalBallFunction(hist, kTRUE);
 
 hist->Fit(cBall);
 ```
