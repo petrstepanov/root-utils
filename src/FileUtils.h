@@ -10,6 +10,28 @@
 #include <TBranch.h>
 #include <vector>
 
+/** @struct PathComponents
+ *  @brief Struct contains path components returned by the parseFilePath() method
+ */
+/** @var PathComponents::path
+ *  Absolute path
+ */
+/** @var PathComponents::base
+ *  Filename with extension
+ */
+/** @var PathComponents::name
+ *  Filename only
+ */
+/** @var PathComponents::extension
+ *  Extension
+ */
+struct PathComponents {
+    TString path;
+    TString base;
+    TString name;
+    TString extension;
+};
+
 /**
  * @namespace FileUtils
  * Contains useful functions for ROOT file manipulation.
@@ -47,7 +69,7 @@ namespace FileUtils {
    * @param filePathName absolute file path.
    * @return PathComponents struct with path components.
    */
-  TTree* getTree(TFile* file, const char *treeName);
+  TTree* getTree(TFile *file, const char *treeName);
 
   /**
    * @brief Safely get a branch from a ROOT tree.
@@ -57,7 +79,7 @@ namespace FileUtils {
    * @param tree pointer to the TTree.
    * @return branchName name of the branch to be found.
    */
-  TBranch* getBranch(TTree* tree, const char *branchName);
+  TBranch* getBranch(TTree *tree, const char *branchName);
 
   /**
    * @brief Get minimum value in a tree branch.
@@ -84,7 +106,7 @@ namespace FileUtils {
    * @param treeName name of the tree in the ROOT file.
    * @return branchName name of the branch in the tree.
    */
-  Double_t getBranchMinimumInFiles(TList* filePaths, const char* treeName, const char* branchName);
+  Double_t getBranchMinimumInFiles(TList *filePaths, const char *treeName, const char *branchName);
 
   /**
    * @brief Get maximum value in a tree branch across multiple files.
@@ -95,7 +117,7 @@ namespace FileUtils {
    * @param treeName name of the tree in the ROOT file.
    * @return branchName name of the branch in the tree.
    */
-  Double_t getBranchMaximumInFiles(TList* filePaths, const char* treeName, const char* branchName);
+  Double_t getBranchMaximumInFiles(TList *filePaths, const char *treeName, const char *branchName);
 
   /**
    * @brief Shortcut to get a histogram from ROOT tree branch.
@@ -107,29 +129,7 @@ namespace FileUtils {
    * @param nBins number of bins in the histogram. Default is 150.
    * @return TH1* pointer to the histogram.
    */
-  TH1* getBranchHistogram(TTree *tree, const char *branchName, Int_t nBins=150);
-
-  /** @struct PathComponents
-   *  @brief Struct contains path components returned by the parseFilePath() method
-   */
-  /** @var PathComponents::path
-   *  Absolute path
-   */
-  /** @var PathComponents::base
-   *  Filename with extension
-   */
-  /** @var PathComponents::name
-   *  Filename only
-   */
-  /** @var PathComponents::extension
-   *  Extension
-   */
-  struct PathComponents {
-      TString path;
-      TString base;
-      TString name;
-      TString extension;
-  };
+  TH1* getBranchHistogram(TTree *tree, const char *branchName, Int_t nBins = 150);
 
   /**
    * @brief Parse absolute file path into path, name and extension.
@@ -152,7 +152,8 @@ namespace FileUtils {
    * @param delimeter column delimeter (default "   ").
    * @return 0 if success, 1 if error.
    */
-  Int_t exportValuesToGnuplot(TString filename, std::vector<std::string> colNames, std::vector<double> values, const char* delimeter="   ");
+  Int_t exportValuesToGnuplot(TString filename, std::vector<std::string> colNames, std::vector<double> values,
+    const char *delimeter = "   ");
 }
 
 #endif
