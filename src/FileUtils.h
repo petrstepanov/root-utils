@@ -57,9 +57,10 @@ namespace FileUtils {
    * Function checks if a file is good and returns a pointer to a ROOT file TFile* with given absolute path.
    *
    * @param filePathName full ROOT file URI.
+   * @param filePathName ROOT option "NEW", "RECREATE", "UPDATE", "READ".. (optional, default is "READ").
    * @return Pointer to TFile* object.
    */
-  TFile* openFile(const char *filePathName);
+  TFile* openFile(const char *filePathName, Option_t* option = "READ");
 
   /**
    * @brief Parse absolute file path into path, name and extension.
