@@ -101,10 +101,57 @@ Functions</h2></td></tr>
 <tr class="memitem:a82ac01cf47da339477fa1dfa53d4df22"><td class="memItemLeft" align="right" valign="top">TF1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFitUtils.html#a82ac01cf47da339477fa1dfa53d4df22">getCrystalBallFunction</a> (TH1 *hist, Bool_t reversed=kFALSE)</td></tr>
 <tr class="memdesc:a82ac01cf47da339477fa1dfa53d4df22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain a CrystalBall fitting function based on a given histogram.  <a href="namespaceFitUtils.html#a82ac01cf47da339477fa1dfa53d4df22">More...</a><br /></td></tr>
 <tr class="separator:a82ac01cf47da339477fa1dfa53d4df22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f822923330ef14fbe12a74a4b8a649a"><td class="memItemLeft" align="right" valign="top">TVector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFitUtils.html#a1f822923330ef14fbe12a74a4b8a649a">getCrystalBallMean</a> (TF1 *cball, Bool_t reversed)</td></tr>
+<tr class="memdesc:a1f822923330ef14fbe12a74a4b8a649a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate Crystal Ball function mean value.  <a href="namespaceFitUtils.html#a1f822923330ef14fbe12a74a4b8a649a">More...</a><br /></td></tr>
+<tr class="separator:a1f822923330ef14fbe12a74a4b8a649a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7298ebd4944b639274f0b7b5ed119550"><td class="memItemLeft" align="right" valign="top">TVector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFitUtils.html#a7298ebd4944b639274f0b7b5ed119550">getCrystalBallDispersion</a> (TF1 *cball, Bool_t reversed)</td></tr>
+<tr class="memdesc:a7298ebd4944b639274f0b7b5ed119550"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate Crystal Ball dispersion (standard deviation) value.  <a href="namespaceFitUtils.html#a7298ebd4944b639274f0b7b5ed119550">More...</a><br /></td></tr>
+<tr class="separator:a7298ebd4944b639274f0b7b5ed119550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e7ede65019bd5bdffe1c8c00e644fc7"><td class="memItemLeft" align="right" valign="top">TVector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFitUtils.html#a8e7ede65019bd5bdffe1c8c00e644fc7">getCrystalBallResolution</a> (TF1 *cball, Bool_t isReversed)</td></tr>
+<tr class="memdesc:a8e7ede65019bd5bdffe1c8c00e644fc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate Crystal Ball resolution value (standard deviation / mean).  <a href="namespaceFitUtils.html#a8e7ede65019bd5bdffe1c8c00e644fc7">More...</a><br /></td></tr>
+<tr class="separator:a8e7ede65019bd5bdffe1c8c00e644fc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of a Crystal Ball function in ROOT. Supports regular and reversed crystal ball functions. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a7298ebd4944b639274f0b7b5ed119550"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7298ebd4944b639274f0b7b5ed119550">&#9670;&nbsp;</a></span>getCrystalBallDispersion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TVector2 FitUtils::getCrystalBallDispersion </td>
+          <td>(</td>
+          <td class="paramtype">TF1 *&#160;</td>
+          <td class="paramname"><em>cball</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Bool_t&#160;</td>
+          <td class="paramname"><em>reversed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate Crystal Ball dispersion (standard deviation) value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cball</td><td>Crystal ball function. </td></tr>
+    <tr><td class="paramname">reversed</td><td>type of the crystal ball function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>TVector2 dispersion value and error. </dd></dl>
+
+</div>
+</div>
 <a id="a82ac01cf47da339477fa1dfa53d4df22"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a82ac01cf47da339477fa1dfa53d4df22">&#9670;&nbsp;</a></span>getCrystalBallFunction()</h2>
 
@@ -141,6 +188,81 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ROOT function ready for fitting. </dd></dl>
+
+</div>
+</div>
+<a id="a1f822923330ef14fbe12a74a4b8a649a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f822923330ef14fbe12a74a4b8a649a">&#9670;&nbsp;</a></span>getCrystalBallMean()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TVector2 FitUtils::getCrystalBallMean </td>
+          <td>(</td>
+          <td class="paramtype">TF1 *&#160;</td>
+          <td class="paramname"><em>cball</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Bool_t&#160;</td>
+          <td class="paramname"><em>reversed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate Crystal Ball function mean value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cball</td><td>Crystal ball function. </td></tr>
+    <tr><td class="paramname">reversed</td><td>type of the crystal ball function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>TVector2 mean value and error. </dd></dl>
+
+</div>
+</div>
+<a id="a8e7ede65019bd5bdffe1c8c00e644fc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e7ede65019bd5bdffe1c8c00e644fc7">&#9670;&nbsp;</a></span>getCrystalBallResolution()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TVector2 FitUtils::getCrystalBallResolution </td>
+          <td>(</td>
+          <td class="paramtype">TF1 *&#160;</td>
+          <td class="paramname"><em>cball</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Bool_t&#160;</td>
+          <td class="paramname"><em>isReversed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate Crystal Ball resolution value (standard deviation / mean). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cball</td><td>Crystal ball function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>TVector2 resolution value and error. </dd></dl>
 
 </div>
 </div>

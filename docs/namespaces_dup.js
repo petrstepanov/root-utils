@@ -18,10 +18,12 @@ var namespaces_dup =
       [ "cropHistogram", "namespaceHistUtils.html#a5ac85c46fa9ea77f1125c88e3ca21c77", null ],
       [ "cropHistogram", "namespaceHistUtils.html#a453130b9506397da2e32a3c9932ef744", null ],
       [ "getMeanY", "namespaceHistUtils.html#a0f27f40c41b52b247e12bc24aedc8b09", null ],
-      [ "invertHist", "namespaceHistUtils.html#a17dac3a36429bbccbc9b7a67d8fb7ea6", null ]
+      [ "invertHist", "namespaceHistUtils.html#a17dac3a36429bbccbc9b7a67d8fb7ea6", null ],
+      [ "makeHistStack", "namespaceHistUtils.html#a2b693e3f78c2ebe3b38287f8e4662a81", null ]
     ] ],
     [ "StringUtils", "namespaceStringUtils.html", [
       [ "formatEnergy", "namespaceStringUtils.html#aa6f13ec513feb9361dcfef6a6d1b8b56", null ],
+      [ "getSafeName", "namespaceStringUtils.html#a07be34df3cef7da86b8859ae211fdec1", null ],
       [ "stripExtension", "namespaceStringUtils.html#a22bd0840ba5f9095db85dc49045e25fc", null ],
       [ "writeProgress", "namespaceStringUtils.html#ac620ee5e663e087cba3221f054c8e769", null ]
     ] ],

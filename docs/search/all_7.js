@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['name_22',['name',['../structPathComponents.html#a90c6ec320ab4fe14c810268b1d8131a1',1,'PathComponents']]]
+  ['makehiststack_26',['makeHistStack',['../namespaceHistUtils.html#a2b693e3f78c2ebe3b38287f8e4662a81',1,'HistUtils']]]
 ];

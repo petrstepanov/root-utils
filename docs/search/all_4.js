@@ -6,8 +6,12 @@ var searchData=
   ['getbranchmaximuminfiles_13',['getBranchMaximumInFiles',['../namespaceFileUtils.html#ac72a4c54cfe29f81a112b3e822eaa9c5',1,'FileUtils']]],
   ['getbranchminimum_14',['getBranchMinimum',['../namespaceFileUtils.html#a5c6c473991d4e7dbe20d50d0f8f5527d',1,'FileUtils']]],
   ['getbranchminimuminfiles_15',['getBranchMinimumInFiles',['../namespaceFileUtils.html#a0215312318e51d9257307db59c9d5e60',1,'FileUtils']]],
-  ['getcrystalballfunction_16',['getCrystalBallFunction',['../namespaceFitUtils.html#a82ac01cf47da339477fa1dfa53d4df22',1,'FitUtils']]],
-  ['getfilepaths_17',['getFilePaths',['../namespaceUiUtils.html#a5c2ffeeabf99da58a67e18299bbdea70',1,'UiUtils']]],
-  ['getmeany_18',['getMeanY',['../namespaceHistUtils.html#a0f27f40c41b52b247e12bc24aedc8b09',1,'HistUtils']]],
-  ['gettree_19',['getTree',['../namespaceFileUtils.html#a8c4d09cff14a6e8961c18e72b014d4dc',1,'FileUtils']]]
+  ['getcrystalballdispersion_16',['getCrystalBallDispersion',['../namespaceFitUtils.html#a7298ebd4944b639274f0b7b5ed119550',1,'FitUtils']]],
+  ['getcrystalballfunction_17',['getCrystalBallFunction',['../namespaceFitUtils.html#a82ac01cf47da339477fa1dfa53d4df22',1,'FitUtils']]],
+  ['getcrystalballmean_18',['getCrystalBallMean',['../namespaceFitUtils.html#a1f822923330ef14fbe12a74a4b8a649a',1,'FitUtils']]],
+  ['getcrystalballresolution_19',['getCrystalBallResolution',['../namespaceFitUtils.html#a8e7ede65019bd5bdffe1c8c00e644fc7',1,'FitUtils']]],
+  ['getfilepaths_20',['getFilePaths',['../namespaceUiUtils.html#a5c2ffeeabf99da58a67e18299bbdea70',1,'UiUtils']]],
+  ['getmeany_21',['getMeanY',['../namespaceHistUtils.html#a0f27f40c41b52b247e12bc24aedc8b09',1,'HistUtils']]],
+  ['getsafename_22',['getSafeName',['../namespaceStringUtils.html#a07be34df3cef7da86b8859ae211fdec1',1,'StringUtils']]],
+  ['gettree_23',['getTree',['../namespaceFileUtils.html#a8c4d09cff14a6e8961c18e72b014d4dc',1,'FileUtils']]]
 ];

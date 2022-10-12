@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['openfile_23',['openFile',['../namespaceFileUtils.html#a0e15a195c64b8339f3cb687f7a1774d2',1,'FileUtils']]]
+  ['name_27',['name',['../structPathComponents.html#a90c6ec320ab4fe14c810268b1d8131a1',1,'PathComponents']]]
 ];

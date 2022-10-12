@@ -9,6 +9,8 @@
 //#include <iomanip>
 //#include <fstream>
 
+using namespace TMath;
+
 FitUtils::CrystalBallFunctionObject::CrystalBallFunctionObject(Bool_t _isReversed) {
   isReversed = _isReversed;
 }
@@ -42,7 +44,7 @@ Double_t FitUtils::CrystalBallFunctionObject::operator()(double *_x, double *par
 
   // Reversed Crystal Ball
   if (x - mean < a * sigma) {
-    // Gauss
+    // Gauss (same)
     return norm * N * TMath::Exp(-TMath::Power(x - mean, (LongDouble_t) 2) / 2 / TMath::Power(sigma, (LongDouble_t) 2));
   }
   // Power
@@ -77,7 +79,7 @@ TF1* FitUtils::getCrystalBallFunction(TH1 *hist, Bool_t reversed) {
 
   fBall->SetParName(1, "n");
   fBall->SetParameter(1, 1);
-  fBall->SetParLimits(1, 1, 20);
+  fBall->SetParLimits(1, 1, 30);
 
   fBall->SetParName(2, "mean");
   Double_t mean = hist->GetBinCenter(hist->GetMaximumBin());
@@ -104,4 +106,84 @@ TF1* FitUtils::getCrystalBallFunction(TH1 *hist, Bool_t reversed) {
 //  s = edepHist->GetFunction("fBall")->GetParameter(3); // sigma
 //  Ds = edepHist->GetFunction("fBall")->GetParError(3); // sigma error
 
+}
+
+//LongDouble_t Sqrt(LongDouble_t val)
+
+TVector2 FitUtils::getCrystalBallMean(TF1* cball, Bool_t isReversed){
+  Double_t a = cball->GetParameter(0);
+  Double_t n = cball->GetParameter(1);
+  Double_t Mu = cball->GetParameter(2);
+  Double_t Sigma = cball->GetParameter(3);
+
+  Double_t Pi = TMath::Pi();
+  Double_t E = TMath::E();
+
+  Double_t intXfX = 0;
+  if (!isReversed) {
+    // Crystal Ball function. Refer to the "./wolfram/crystal-ball.nb"
+    intXfX = (a*(-1 + n)*(2*Sigma + Power(E,Power(a,2)/2.)*Sqrt(2*Pi)*Mu*(1 + Erf(a/Sqrt(2)))))/
+        (2*n + a*Power(E,Power(a,2)/2.)*(-1 + n)*Sqrt(2*Pi)*(1 + Erf(a/Sqrt(2)))) -
+       (2*n*Power(n/a,n)*Sigma*(-(a*(-2 + n)*Mu) + Power(a,2)*(-2 + n)*Sigma + n*Sigma))/
+        (a*(-2 + n)*Power(-a + n/a + Mu/Sigma,n)*Power((n*Sigma)/(a*Mu - Power(a,2)*Sigma + n*Sigma),n)*
+          (2*n*Sigma + a*Power(E,Power(a,2)/2.)*(-1 + n)*Sqrt(2*Pi)*Sigma*(1 + Erf(a/Sqrt(2)))));
+  }
+  else {
+    // Reversed Crystal Ball function. Refer to the "./wolfram/crystal-ball-reversed.nb"
+    intXfX = (a*(-1 + n)*(-2*Sigma + Power(E,Power(a,2)/2.)*Sqrt(2*Pi)*Mu*(1 + Erf(a/Sqrt(2)))))/
+        (2*n + a*Power(E,Power(a,2)/2.)*(-1 + n)*Sqrt(2*Pi)*(1 + Erf(a/Sqrt(2)))) +
+       (2*n*Sigma*(a*(-2 + n)*Mu + Power(a,2)*(-2 + n)*Sigma + n*Sigma))/
+        (a*(-2 + n)*Power(-(a/(a*Mu + Power(a,2)*Sigma - n*Sigma)),n)*Power(-Mu - a*Sigma + (n*Sigma)/a,n)*
+          (2*n*Sigma + a*Power(E,Power(a,2)/2.)*(-1 + n)*Sqrt(2*Pi)*Sigma*(1 + Erf(a/Sqrt(2)))));
+  }
+
+  TVector2 mean(intXfX, cball->GetParError(2));
+  return mean;
+}
+
+TVector2 FitUtils::getCrystalBallDispersion(TF1* cball, Bool_t isReversed){
+  Double_t a = cball->GetParameter(0);
+  Double_t n = cball->GetParameter(1);
+  Double_t Mu = cball->GetParameter(2);
+  Double_t Sigma = cball->GetParameter(3);
+
+  Double_t Pi = TMath::Pi();
+  Double_t E = TMath::E();
+
+  // Refer to the ./wolfram/crystal-ball.nb
+  Double_t intX2fX = 0;
+  if (!isReversed) {
+    // Crystal Ball function. Refer to the "./wolfram/crystal-ball.nb"
+    intX2fX = (a*(-1 + n)*Power(Sigma,2)*(-2*a + Power(E,Power(a,2)/2.)*Sqrt(2*Pi)*(1 + Erf(a/Sqrt(2)))))/
+        (2*n + a*Power(E,Power(a,2)/2.)*(-1 + n)*Sqrt(2*Pi)*(1 + Erf(a/Sqrt(2)))) +
+       (2*n*(Power(a,4)*(-3 + n)*(-2 + n) + 2*Power(a,2)*(-3 + n)*n + 2*Power(n,2))*Power(Sigma,3))/
+        (Power(a,2)*(-3 + n)*(-2 + n)*(2*n*Sigma + a*Power(E,Power(a,2)/2.)*(-1 + n)*Sqrt(2*Pi)*Sigma*(1 + Erf(a/Sqrt(2)))));
+  }
+  else {
+    // Reversed Crystal Ball function. Refer to the "./wolfram/crystal-ball-reversed.nb"
+    intX2fX = (a*(-1 + n)*Power(Sigma,2)*(-2*a + Power(E,Power(a,2)/2.)*Sqrt(2*Pi)*(1 + Erf(a/Sqrt(2)))))/
+        (2*n + a*Power(E,Power(a,2)/2.)*(-1 + n)*Sqrt(2*Pi)*(1 + Erf(a/Sqrt(2)))) +
+       (2*n*(Power(a,4)*(-3 + n)*(-2 + n) + 2*Power(a,2)*(-3 + n)*n + 2*Power(n,2))*Power(Sigma,3))/
+        (Power(a,2)*(-3 + n)*(-2 + n)*(2*n*Sigma + a*Power(E,Power(a,2)/2.)*(-1 + n)*Sqrt(2*Pi)*Sigma*(1 + Erf(a/Sqrt(2)))));
+  }
+  // Dispersion (standard deviation) is square root of the function variance
+  Double_t dispersion = TMath::Sqrt(intX2fX);
+  TVector2 std(dispersion, cball->GetParError(3));
+  return std;
+}
+
+TVector2 FitUtils::getCrystalBallResolution(TF1* cball, Bool_t isReversed){
+  TVector2 mean = getCrystalBallMean(cball, isReversed);
+  TVector2 std = getCrystalBallDispersion(cball, isReversed);
+
+  Double_t m = mean.X();
+  Double_t Dm = mean.Y();
+  Double_t s = std.X();
+  Double_t Ds = std.Y();
+
+  Double_t r = s / m * 100;  // Resolution
+  Double_t Dr = 100 * TMath::Sqrt(TMath::Power(1 / m * Ds, 2) + TMath::Power(s / m / m * Dm, 2)); // Indirect error
+
+  TVector2 resolution(r, Dr);
+  return resolution;
 }

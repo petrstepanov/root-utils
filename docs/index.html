@@ -108,7 +108,16 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line">// Reversed Crystal Ball function</div>
 <div class="line">TF1 *cBallReversed = FitUtils::getCrystalBallFunction(hist, kTRUE);</div>
 <div class="line"> </div>
+<div class="line">// Fitting</div>
 <div class="line">hist-&gt;Fit(cBall);</div>
+<div class="line"> </div>
+<div class="line">// Obtaining fit function moments as a pair (value and error)</div>
+<div class="line">// Second parameter (boolean) reflects if current function is reversed</div>
+<div class="line">TVector2 mean = FitUtils::getCrystalBallMean(cBall, kFALSE);</div>
+<div class="line">TVector2 dispersion = FitUtils::getCrystalBallDispersion(cBall, kFALSE);</div>
+<div class="line"> </div>
+<div class="line">// Additionally it is possible to calculate resolution of the distribution as follows</div>
+<div class="line">TVector2 resolution = FitUtils::getCrystalBallResolution(cBall, kFALSE);</div>
 </div><!-- fragment --><p align="center"></p>
 <p><img src="https://raw.githubusercontent.com/petrstepanov/root-utils/master/resources/crystal-ball-fit.png" alt="Fitting ROOT histograms with Crystal Ball function" width="85%" class="inline"/> </p>
 <p>Library namespaces documentation can be found here: <a href="https://petrstepanov.com/root-utils/namespaces.html">https://petrstepanov.com/root-utils/namespaces.html</a></p>

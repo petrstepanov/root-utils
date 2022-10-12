@@ -91,23 +91,28 @@ $(document).ready(function(){initNavTree('HistUtils_8h_source.html',''); initRes
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define HistUtils_hh 1</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;TH1.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;TList.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;TTree.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceHistUtils.html">HistUtils</a> {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  Double_t <a class="code" href="namespaceHistUtils.html#a0f27f40c41b52b247e12bc24aedc8b09">getMeanY</a>(TH1 *hist);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespaceHistUtils.html#a17dac3a36429bbccbc9b7a67d8fb7ea6">invertHist</a>(TH1 *hist);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  TH1* <a class="code" href="namespaceHistUtils.html#a5ac85c46fa9ea77f1125c88e3ca21c77">cropHistogram</a>(TH1 *hist, Double_t minX, Double_t maxX);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  TH1* <a class="code" href="namespaceHistUtils.html#a5ac85c46fa9ea77f1125c88e3ca21c77">cropHistogram</a>(TH1 *hist, Int_t minBin, Int_t maxBin);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;TH2.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;TList.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;TTree.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceHistUtils.html">HistUtils</a> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  Double_t <a class="code" href="namespaceHistUtils.html#a0f27f40c41b52b247e12bc24aedc8b09">getMeanY</a>(TH1 *hist);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespaceHistUtils.html#a17dac3a36429bbccbc9b7a67d8fb7ea6">invertHist</a>(TH1 *hist);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  TH1* <a class="code" href="namespaceHistUtils.html#a5ac85c46fa9ea77f1125c88e3ca21c77">cropHistogram</a>(TH1 *hist, Double_t minX, Double_t maxX);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  TH1* <a class="code" href="namespaceHistUtils.html#a5ac85c46fa9ea77f1125c88e3ca21c77">cropHistogram</a>(TH1 *hist, Int_t minBin, Int_t maxBin);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;   TH2* <a class="code" href="namespaceHistUtils.html#a2b693e3f78c2ebe3b38287f8e4662a81">makeHistStack</a>(TList* histList, Double_t axisMin = 0, Double_t axisMax = 1, <span class="keyword">const</span> <span class="keywordtype">char</span>* name=<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="anamespaceHistUtils_html"><div class="ttname"><a href="namespaceHistUtils.html">HistUtils</a></div><div class="ttdef"><b>Definition:</b> RootUtils.cxx:103</div></div>
-<div class="ttc" id="anamespaceHistUtils_html_a0f27f40c41b52b247e12bc24aedc8b09"><div class="ttname"><a href="namespaceHistUtils.html#a0f27f40c41b52b247e12bc24aedc8b09">HistUtils::getMeanY</a></div><div class="ttdeci">Double_t getMeanY(TH1 *hist)</div><div class="ttdoc">Get histogram mean value along Y axis.</div><div class="ttdef"><b>Definition:</b> HistUtils.cpp:10</div></div>
-<div class="ttc" id="anamespaceHistUtils_html_a17dac3a36429bbccbc9b7a67d8fb7ea6"><div class="ttname"><a href="namespaceHistUtils.html#a17dac3a36429bbccbc9b7a67d8fb7ea6">HistUtils::invertHist</a></div><div class="ttdeci">void invertHist(TH1 *hist)</div><div class="ttdoc">Invert histogram.</div><div class="ttdef"><b>Definition:</b> HistUtils.cpp:51</div></div>
-<div class="ttc" id="anamespaceHistUtils_html_a5ac85c46fa9ea77f1125c88e3ca21c77"><div class="ttname"><a href="namespaceHistUtils.html#a5ac85c46fa9ea77f1125c88e3ca21c77">HistUtils::cropHistogram</a></div><div class="ttdeci">TH1 * cropHistogram(TH1 *hist, Double_t minX, Double_t maxX)</div><div class="ttdoc">Crop histogram to a given range.</div><div class="ttdef"><b>Definition:</b> HistUtils.cpp:18</div></div>
+<div class="ttc" id="anamespaceHistUtils_html_a0f27f40c41b52b247e12bc24aedc8b09"><div class="ttname"><a href="namespaceHistUtils.html#a0f27f40c41b52b247e12bc24aedc8b09">HistUtils::getMeanY</a></div><div class="ttdeci">Double_t getMeanY(TH1 *hist)</div><div class="ttdoc">Get histogram mean value along Y axis.</div><div class="ttdef"><b>Definition:</b> HistUtils.cpp:13</div></div>
+<div class="ttc" id="anamespaceHistUtils_html_a17dac3a36429bbccbc9b7a67d8fb7ea6"><div class="ttname"><a href="namespaceHistUtils.html#a17dac3a36429bbccbc9b7a67d8fb7ea6">HistUtils::invertHist</a></div><div class="ttdeci">void invertHist(TH1 *hist)</div><div class="ttdoc">Invert histogram.</div><div class="ttdef"><b>Definition:</b> HistUtils.cpp:54</div></div>
+<div class="ttc" id="anamespaceHistUtils_html_a2b693e3f78c2ebe3b38287f8e4662a81"><div class="ttname"><a href="namespaceHistUtils.html#a2b693e3f78c2ebe3b38287f8e4662a81">HistUtils::makeHistStack</a></div><div class="ttdeci">TH2 * makeHistStack(TList *histList, Double_t axisMin=0, Double_t axisMax=1, const char *name=&quot;&quot;)</div><div class="ttdoc">Make 3D histogram stack.</div><div class="ttdef"><b>Definition:</b> HistUtils.cpp:65</div></div>
+<div class="ttc" id="anamespaceHistUtils_html_a5ac85c46fa9ea77f1125c88e3ca21c77"><div class="ttname"><a href="namespaceHistUtils.html#a5ac85c46fa9ea77f1125c88e3ca21c77">HistUtils::cropHistogram</a></div><div class="ttdeci">TH1 * cropHistogram(TH1 *hist, Double_t minX, Double_t maxX)</div><div class="ttdoc">Crop histogram to a given range.</div><div class="ttdef"><b>Definition:</b> HistUtils.cpp:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

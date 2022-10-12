@@ -5,6 +5,7 @@
 #include <TObjString.h>
 #include <TObjArray.h>
 #include <TPRegexp.h>
+#include <TROOT.h>
 
 #include <iostream>
 #include <ostream>
@@ -66,4 +67,16 @@ EnergyValueUnit StringUtils::formatEnergy(Double_t value) {
 
 std::ostream &operator<<(std::ostream &os, EnergyValueUnit const &evu) {
     return os << evu.value << " " << evu.unit;
+}
+
+TString StringUtils::getSafeName(const char* name){
+  TString newName = name;
+  if (!gROOT->FindObject(name)) return newName;
+
+  Int_t index=1;
+  while (gROOT->FindObject(newName.Data())){
+    newName = name;
+    newName += index++;
+  }
+  return newName;
 }

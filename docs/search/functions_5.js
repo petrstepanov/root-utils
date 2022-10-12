@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['openfile_60',['openFile',['../namespaceFileUtils.html#a0e15a195c64b8339f3cb687f7a1774d2',1,'FileUtils']]]
+  ['makehiststack_69',['makeHistStack',['../namespaceHistUtils.html#a2b693e3f78c2ebe3b38287f8e4662a81',1,'HistUtils']]]
 ];
