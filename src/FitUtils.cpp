@@ -78,11 +78,11 @@ TF1* FitUtils::getCrystalBallFunction(TH1 *hist, Bool_t reversed) {
   fBall->SetParLimits(0, 1E-2, 1E2);
 
   fBall->SetParName(1, "n");
-  fBall->SetParameter(1, 1);
+  fBall->SetParameter(1, 1E-3);
   fBall->SetParLimits(1, 1, 30);
 
   fBall->SetParName(2, "mean");
-  Double_t mean = hist->GetBinCenter(hist->GetMaximumBin());
+  Double_t mean = hist->GetMean();
   fBall->SetParameter(2, mean);
   fBall->SetParLimits(2, mean - 2 * hist->GetRMS(), mean + 2 * hist->GetRMS());
 
@@ -101,16 +101,19 @@ TF1* FitUtils::getCrystalBallFunction(TH1 *hist, Bool_t reversed) {
   //           also use Long Double vs Double in the fitting function evaluate()
 
   return fBall;
-//  m = edepHist->GetFunction("fBall")->GetParameter(2); // mean
-//  Dm = edepHist->GetFunction("fBall")->GetParError(2); // mean error
-//  s = edepHist->GetFunction("fBall")->GetParameter(3); // sigma
-//  Ds = edepHist->GetFunction("fBall")->GetParError(3); // sigma error
-
 }
 
-//LongDouble_t Sqrt(LongDouble_t val)
 
-TVector2 FitUtils::getCrystalBallMean(TF1* cball, Bool_t isReversed){
+TVector2 FitUtils::getCrystalBallMean(TF1* cball){
+  Double_t xMin = cball->GetXmin();
+  Double_t xMax = cball->GetXmax();
+
+  Double_t mean = cball->Mean(xMin, xMax);
+  Double_t meanErr = cball->GetParError(2);
+
+  return TVector2(mean, meanErr);
+
+  /*
   Double_t a = cball->GetParameter(0);
   Double_t n = cball->GetParameter(1);
   Double_t Mu = cball->GetParameter(2);
@@ -138,10 +141,19 @@ TVector2 FitUtils::getCrystalBallMean(TF1* cball, Bool_t isReversed){
   }
 
   TVector2 mean(intXfX, cball->GetParError(2));
-  return mean;
+  return mean; */
 }
 
-TVector2 FitUtils::getCrystalBallDispersion(TF1* cball, Bool_t isReversed){
+TVector2 FitUtils::getCrystalBallDispersion(TF1* cball){
+  Double_t xMin = cball->GetXmin();
+  Double_t xMax = cball->GetXmax();
+
+  Double_t variance = cball->Variance(xMin, xMax);
+  Double_t dispersion = TMath::Sqrt(variance);
+  Double_t dispersionErr = cball->GetParError(3);
+
+  return TVector2(dispersion, dispersionErr);
+  /*
   Double_t a = cball->GetParameter(0);
   Double_t n = cball->GetParameter(1);
   Double_t Mu = cball->GetParameter(2);
@@ -169,21 +181,21 @@ TVector2 FitUtils::getCrystalBallDispersion(TF1* cball, Bool_t isReversed){
   // Dispersion (standard deviation) is square root of the function variance
   Double_t dispersion = TMath::Sqrt(intX2fX);
   TVector2 std(dispersion, cball->GetParError(3));
-  return std;
+  return std; */
 }
 
-TVector2 FitUtils::getCrystalBallResolution(TF1* cball, Bool_t isReversed){
-  TVector2 mean = getCrystalBallMean(cball, isReversed);
-  TVector2 std = getCrystalBallDispersion(cball, isReversed);
-
-  Double_t m = mean.X();
-  Double_t Dm = mean.Y();
-  Double_t s = std.X();
-  Double_t Ds = std.Y();
-
-  Double_t r = s / m * 100;  // Resolution
-  Double_t Dr = 100 * TMath::Sqrt(TMath::Power(1 / m * Ds, 2) + TMath::Power(s / m / m * Dm, 2)); // Indirect error
+TVector2 FitUtils::evalResolution(Double_t mean, Double_t meanErr, Double_t std, Double_t stdErr){
+  Double_t r = std / mean * 100;  // Resolution
+  Double_t Dr = 100 * TMath::Sqrt(TMath::Power(1 / mean * stdErr, 2) + TMath::Power(std / mean / mean * meanErr, 2)); // Indirect error
 
   TVector2 resolution(r, Dr);
   return resolution;
+}
+
+TVector2 FitUtils::getCrystalBallResolution(TF1* cball){
+  TVector2 mean = getCrystalBallMean(cball);
+  TVector2 std = getCrystalBallDispersion(cball);
+
+  return evalResolution(mean.X(), mean.Y(), std.X(), std.Y());
+
 }

@@ -44,7 +44,7 @@ namespace FitUtils {
    * @param reversed type of the crystal ball function.
    * @return TVector2 mean value and error.
    */
-  TVector2 getCrystalBallMean(TF1* cball, Bool_t reversed);
+  TVector2 getCrystalBallMean(TF1* cball);
 
   /**
    * @brief Calculate Crystal Ball dispersion (standard deviation) value.
@@ -53,7 +53,7 @@ namespace FitUtils {
    * @param reversed type of the crystal ball function.
    * @return TVector2 dispersion value and error.
    */
-  TVector2 getCrystalBallDispersion(TF1* cball, Bool_t reversed);
+  TVector2 getCrystalBallDispersion(TF1* cball);
 
   /**
    * @brief Calculate Crystal Ball resolution value (standard deviation / mean).
@@ -61,7 +61,18 @@ namespace FitUtils {
    * @param cball Crystal ball function.
    * @return TVector2 resolution value and error.
    */
-  TVector2 getCrystalBallResolution(TF1* cball, Bool_t isReversed);
+  TVector2 getCrystalBallResolution(TF1* cball);
+
+  /**
+   * @brief Calculate resolution of a distribution with given standard deviation and mean.
+   *
+   * @param mean distribution mean.
+   * @param meanErr distribution mean error.
+   * @param std distribution standard deviation.
+   * @param stdErr distribution standard deviation error.
+   * @return TVector2 resolution value and error.
+   */
+  TVector2 evalResolution(Double_t mean, Double_t meanErr, Double_t std, Double_t stdErr);
 }
 
 #endif

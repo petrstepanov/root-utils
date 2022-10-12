@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stringutils_48',['StringUtils',['../namespaceStringUtils.html',1,'']]]
+  ['stringutils_49',['StringUtils',['../namespaceStringUtils.html',1,'']]]
 ];
