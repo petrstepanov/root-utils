@@ -3,6 +3,7 @@
 
 #include <RtypesCore.h>
 #include <TF1.h>
+#include <TVector2.h>
 
 /**
  * @namespace FitUtils
@@ -20,6 +21,7 @@ namespace FitUtils {
       CrystalBallFunctionObject(Bool_t _isInverted = kFALSE);
       Double_t operator()(double *_x, double *par);
 
+
     private:
       Bool_t isReversed;
   };
@@ -35,7 +37,42 @@ namespace FitUtils {
    */
   TF1* getCrystalBallFunction(TH1 *hist, Bool_t reversed = kFALSE);
 
-  // TF1* fitHistWithROOTCrystalBall(TH1 *hist, Bool_t inverted);
+  /**
+   * @brief Calculate Crystal Ball function mean value.
+   *
+   * @param cball Crystal ball function.
+   * @param reversed type of the crystal ball function.
+   * @return TVector2 mean value and error.
+   */
+  TVector2 getCrystalBallMean(TF1* cball);
+
+  /**
+   * @brief Calculate Crystal Ball dispersion (standard deviation) value.
+   *
+   * @param cball Crystal ball function.
+   * @param reversed type of the crystal ball function.
+   * @return TVector2 dispersion value and error.
+   */
+  TVector2 getCrystalBallDispersion(TF1* cball);
+
+  /**
+   * @brief Calculate Crystal Ball resolution value (standard deviation / mean).
+   *
+   * @param cball Crystal ball function.
+   * @return TVector2 resolution value and error.
+   */
+  TVector2 getCrystalBallResolution(TF1* cball);
+
+  /**
+   * @brief Calculate resolution of a distribution with given standard deviation and mean.
+   *
+   * @param mean distribution mean.
+   * @param meanErr distribution mean error.
+   * @param std distribution standard deviation.
+   * @param stdErr distribution standard deviation error.
+   * @return TVector2 resolution value and error.
+   */
+  TVector2 evalResolution(Double_t mean, Double_t meanErr, Double_t std, Double_t stdErr);
 }
 
 #endif

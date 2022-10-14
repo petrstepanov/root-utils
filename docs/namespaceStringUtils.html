@@ -101,6 +101,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aa6f13ec513feb9361dcfef6a6d1b8b56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structEnergyValueUnit.html">EnergyValueUnit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceStringUtils.html#aa6f13ec513feb9361dcfef6a6d1b8b56">formatEnergy</a> (Double_t value)</td></tr>
 <tr class="memdesc:aa6f13ec513feb9361dcfef6a6d1b8b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Format energy to appropriate unit. Function outputs <a class="el" href="structEnergyValueUnit.html" title="Struct contains energy value (Double_t) with corresponding unit (TString)">EnergyValueUnit</a> structure containing energy value converted to the best unit for presenting - TeV, GeV, .. eV.  <a href="namespaceStringUtils.html#aa6f13ec513feb9361dcfef6a6d1b8b56">More...</a><br /></td></tr>
 <tr class="separator:aa6f13ec513feb9361dcfef6a6d1b8b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07be34df3cef7da86b8859ae211fdec1"><td class="memItemLeft" align="right" valign="top">TString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceStringUtils.html#a07be34df3cef7da86b8859ae211fdec1">getSafeName</a> (const char *name)</td></tr>
+<tr class="memdesc:a07be34df3cef7da86b8859ae211fdec1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get save ROOT object name.  <a href="namespaceStringUtils.html#a07be34df3cef7da86b8859ae211fdec1">More...</a><br /></td></tr>
+<tr class="separator:a07be34df3cef7da86b8859ae211fdec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Useful string operations. </p>
@@ -129,6 +132,34 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="structEnergyValueUnit.html" title="Struct contains energy value (Double_t) with corresponding unit (TString)">EnergyValueUnit</a> Structure containing value (double) and unit (std::string). </dd></dl>
+
+</div>
+</div>
+<a id="a07be34df3cef7da86b8859ae211fdec1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07be34df3cef7da86b8859ae211fdec1">&#9670;&nbsp;</a></span>getSafeName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TString StringUtils::getSafeName </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get save ROOT object name. </p>
+<p>Function checks if ROOT object with given name exists and appends corresponding index to it avoiding objects with duplicate names.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">naem</td><td>Base name of a new object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>TString object name with appended index to it </dd></dl>
 
 </div>
 </div>

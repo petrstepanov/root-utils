@@ -104,6 +104,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a453130b9506397da2e32a3c9932ef744"><td class="memItemLeft" align="right" valign="top">TH1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHistUtils.html#a453130b9506397da2e32a3c9932ef744">cropHistogram</a> (TH1 *hist, Int_t minBin, Int_t maxBin)</td></tr>
 <tr class="memdesc:a453130b9506397da2e32a3c9932ef744"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crop histogram to a given bin range.  <a href="namespaceHistUtils.html#a453130b9506397da2e32a3c9932ef744">More...</a><br /></td></tr>
 <tr class="separator:a453130b9506397da2e32a3c9932ef744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b693e3f78c2ebe3b38287f8e4662a81"><td class="memItemLeft" align="right" valign="top">TH2 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHistUtils.html#a2b693e3f78c2ebe3b38287f8e4662a81">makeHistStack</a> (TList *histList, Double_t axisMin=0, Double_t axisMax=1, const char *name=&quot;&quot;)</td></tr>
+<tr class="memdesc:a2b693e3f78c2ebe3b38287f8e4662a81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make 3D histogram stack.  <a href="namespaceHistUtils.html#a2b693e3f78c2ebe3b38287f8e4662a81">More...</a><br /></td></tr>
+<tr class="separator:a2b693e3f78c2ebe3b38287f8e4662a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Useful histogram operations. </p>
@@ -252,6 +255,59 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a2b693e3f78c2ebe3b38287f8e4662a81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b693e3f78c2ebe3b38287f8e4662a81">&#9670;&nbsp;</a></span>makeHistStack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TH2 * HistUtils::makeHistStack </td>
+          <td>(</td>
+          <td class="paramtype">TList *&#160;</td>
+          <td class="paramname"><em>histList</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Double_t&#160;</td>
+          <td class="paramname"><em>axisMin</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Double_t&#160;</td>
+          <td class="paramname"><em>axisMax</em> = <code>1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em> = <code>&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Make 3D histogram stack. </p>
+<p>A list of TH1 histograms are aligned one after another in a 3D stack way</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">histList</td><td>TList of histograms. </td></tr>
+    <tr><td class="paramname">axisMin</td><td>minimum new axis number. </td></tr>
+    <tr><td class="paramname">axisMax</td><td>maximum new axis number. </td></tr>
+    <tr><td class="paramname">name</td><td>name of returned histogram </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>new TH2* histogram. </dd></dl>
 
 </div>
 </div>

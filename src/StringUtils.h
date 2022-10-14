@@ -46,6 +46,16 @@ namespace StringUtils {
    * @return EnergyValueUnit Structure containing value (double) and unit (std::string).
    */
   EnergyValueUnit formatEnergy(Double_t value);
+
+  /**
+   * @brief Get save ROOT object name.
+   *
+   * Function checks if ROOT object with given name exists and appends corresponding index to it avoiding objects with duplicate names.
+   *
+   * @param naem Base name of a new object.
+   * @return TString object name with appended index to it
+   */
+  TString getSafeName(const char* name);
 }
 
 #endif

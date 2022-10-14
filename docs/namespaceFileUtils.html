@@ -84,27 +84,20 @@ $(document).ready(function(){initNavTree('namespaceFileUtils.html',''); initResi
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">FileUtils Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFileUtils_1_1PathComponents.html">PathComponents</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct contains path components returned by the <a class="el" href="namespaceFileUtils.html#a6c7da44223cc4a1f99f2ec73a3d3c80f" title="Parse absolute file path into path, name and extension.">parseFilePath()</a> method.  <a href="structFileUtils_1_1PathComponents.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a96a2b93d8699379f78c048e90b4968c9"><td class="memItemLeft" align="right" valign="top">TList *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFileUtils.html#a96a2b93d8699379f78c048e90b4968c9">findFilesInDirectory</a> (const char *dirPath, const char *extension=0)</td></tr>
 <tr class="memdesc:a96a2b93d8699379f78c048e90b4968c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain list of file paths in directory (with given extension).  <a href="namespaceFileUtils.html#a96a2b93d8699379f78c048e90b4968c9">More...</a><br /></td></tr>
 <tr class="separator:a96a2b93d8699379f78c048e90b4968c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34ac56b2e27b16a4f39c7562083f7967"><td class="memItemLeft" align="right" valign="top">TFile *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFileUtils.html#a34ac56b2e27b16a4f39c7562083f7967">openFile</a> (const char *filePathName)</td></tr>
-<tr class="memdesc:a34ac56b2e27b16a4f39c7562083f7967"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open ROOT file with given absolute path.  <a href="namespaceFileUtils.html#a34ac56b2e27b16a4f39c7562083f7967">More...</a><br /></td></tr>
-<tr class="separator:a34ac56b2e27b16a4f39c7562083f7967"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e15a195c64b8339f3cb687f7a1774d2"><td class="memItemLeft" align="right" valign="top">TFile *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFileUtils.html#a0e15a195c64b8339f3cb687f7a1774d2">openFile</a> (const char *filePathName, Option_t *option=&quot;READ&quot;)</td></tr>
+<tr class="memdesc:a0e15a195c64b8339f3cb687f7a1774d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open ROOT file with given absolute path.  <a href="namespaceFileUtils.html#a0e15a195c64b8339f3cb687f7a1774d2">More...</a><br /></td></tr>
+<tr class="separator:a0e15a195c64b8339f3cb687f7a1774d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c4d09cff14a6e8961c18e72b014d4dc"><td class="memItemLeft" align="right" valign="top">TTree *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFileUtils.html#a8c4d09cff14a6e8961c18e72b014d4dc">getTree</a> (TFile *file, const char *treeName)</td></tr>
 <tr class="memdesc:a8c4d09cff14a6e8961c18e72b014d4dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse absolute file path into path, name and extension.  <a href="namespaceFileUtils.html#a8c4d09cff14a6e8961c18e72b014d4dc">More...</a><br /></td></tr>
 <tr class="separator:a8c4d09cff14a6e8961c18e72b014d4dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -126,7 +119,7 @@ Functions</h2></td></tr>
 <tr class="memitem:aa15e5724ad5a206fcf80a47ea94cb471"><td class="memItemLeft" align="right" valign="top">TH1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFileUtils.html#aa15e5724ad5a206fcf80a47ea94cb471">getBranchHistogram</a> (TTree *tree, const char *branchName, Int_t nBins=150)</td></tr>
 <tr class="memdesc:aa15e5724ad5a206fcf80a47ea94cb471"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shortcut to get a histogram from ROOT tree branch.  <a href="namespaceFileUtils.html#aa15e5724ad5a206fcf80a47ea94cb471">More...</a><br /></td></tr>
 <tr class="separator:aa15e5724ad5a206fcf80a47ea94cb471"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c7da44223cc4a1f99f2ec73a3d3c80f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFileUtils_1_1PathComponents.html">PathComponents</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFileUtils.html#a6c7da44223cc4a1f99f2ec73a3d3c80f">parseFilePath</a> (const char *filePathName)</td></tr>
+<tr class="memitem:a6c7da44223cc4a1f99f2ec73a3d3c80f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPathComponents.html">PathComponents</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFileUtils.html#a6c7da44223cc4a1f99f2ec73a3d3c80f">parseFilePath</a> (const char *filePathName)</td></tr>
 <tr class="memdesc:a6c7da44223cc4a1f99f2ec73a3d3c80f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse absolute file path into path, name and extension.  <a href="namespaceFileUtils.html#a6c7da44223cc4a1f99f2ec73a3d3c80f">More...</a><br /></td></tr>
 <tr class="separator:a6c7da44223cc4a1f99f2ec73a3d3c80f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82a8715fc1e1d52e21875a816b920256"><td class="memItemLeft" align="right" valign="top">Int_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFileUtils.html#a82a8715fc1e1d52e21875a816b920256">exportValuesToGnuplot</a> (TString filename, std::vector&lt; std::string &gt; colNames, std::vector&lt; double &gt; values, const char *delimeter=&quot;   &quot;)</td></tr>
@@ -510,12 +503,12 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structFileUtils_1_1PathComponents.html" title="Struct contains path components returned by the parseFilePath() method.">PathComponents</a> struct with path components. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structPathComponents.html" title="Struct contains path components returned by the parseFilePath() method.">PathComponents</a> struct with path components. </dd></dl>
 
 </div>
 </div>
-<a id="a34ac56b2e27b16a4f39c7562083f7967"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34ac56b2e27b16a4f39c7562083f7967">&#9670;&nbsp;</a></span>openFile()</h2>
+<a id="a0e15a195c64b8339f3cb687f7a1774d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e15a195c64b8339f3cb687f7a1774d2">&#9670;&nbsp;</a></span>openFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -524,8 +517,18 @@ Functions</h2></td></tr>
           <td class="memname">TFile * FileUtils::openFile </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>filePathName</em></td><td>)</td>
+          <td class="paramname"><em>filePathName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">Option_t *&#160;</td>
+          <td class="paramname"><em>option</em> = <code>&quot;READ&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -535,6 +538,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">filePathName</td><td>full ROOT file URI. </td></tr>
+    <tr><td class="paramname">filePathName</td><td>ROOT option "NEW", "RECREATE", "UPDATE", "READ".. (optional, default is "READ"). </td></tr>
   </table>
   </dd>
 </dl>
@@ -549,7 +553,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structFileUtils_1_1PathComponents.html">PathComponents</a> FileUtils::parseFilePath </td>
+          <td class="memname"><a class="el" href="structPathComponents.html">PathComponents</a> FileUtils::parseFilePath </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>filePathName</em></td><td>)</td>
@@ -566,7 +570,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structFileUtils_1_1PathComponents.html" title="Struct contains path components returned by the parseFilePath() method.">PathComponents</a> struct with path components. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structPathComponents.html" title="Struct contains path components returned by the parseFilePath() method.">PathComponents</a> struct with path components. </dd></dl>
 
 </div>
 </div>

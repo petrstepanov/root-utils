@@ -25,7 +25,16 @@ TF1 *cBall = FitUtils::getCrystalBallFunction(hist);
 // Reversed Crystal Ball function
 TF1 *cBallReversed = FitUtils::getCrystalBallFunction(hist, kTRUE);
 
+// Fitting
 hist->Fit(cBall);
+
+// Obtaining fit function moments as a pair (value and error)
+// Second parameter (boolean) reflects if current function is reversed
+TVector2 mean = FitUtils::getCrystalBallMean(cBall, kFALSE);
+TVector2 dispersion = FitUtils::getCrystalBallDispersion(cBall, kFALSE);
+
+// Additionally it is possible to calculate resolution of the distribution as follows
+TVector2 resolution = FitUtils::getCrystalBallResolution(cBall, kFALSE);
 ```
 
 <p align="center">

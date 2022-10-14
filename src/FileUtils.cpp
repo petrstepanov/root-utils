@@ -27,10 +27,10 @@ TList* FileUtils::findFilesInDirectory(const char *dirPath, const char *extensio
     exit(1);
   }
 
-  if (!gSystem->AccessPathName(dirPath, EAccessMode::kReadPermission)) {
-    Fatal("FileUtils::getFilePathsInDirectory()", "\"%s\" directory is not readable", dirPath);
-    exit(1);
-  }
+  // if (!gSystem->AccessPathName(dirPath, EAccessMode::kReadPermission)) {
+  //   Fatal("FileUtils::getFilePathsInDirectory()", "\"%s\" directory is not readable", dirPath);
+  //   exit(1);
+  // }
 
   // Obtain list of files in the directory
   Info("FileUtils::getFilePathsInDirectory()", "Obtaining files list in \"%s\" folder... ", dirPath);
@@ -68,9 +68,9 @@ TList* FileUtils::findFilesInDirectory(const char *dirPath, const char *extensio
   return filePathNames;
 }
 
-TFile* FileUtils::openFile(const char *filePathName) {
+TFile* FileUtils::openFile(const char* filePathName, Option_t* option) {
   Info("FileUtils::openFile()", "Opening file \"%s\"...", filePathName);
-  TFile *file = new TFile(filePathName);
+  TFile *file = new TFile(filePathName, option);
   if (file->IsZombie()) {
     file->Close();
     Fatal("FileUtils::openFile()", "File is corrupted. Aborting.");
@@ -223,16 +223,16 @@ Int_t FileUtils::exportValuesToGnuplot(TString filename, std::vector<std::string
   if (!fileExisted) {
     myfile << "# ";
     for (std::string colName : colNames) {
-      myfile << std::setw(std::max(minAsciiColWidth, (int) colName.length())) << colName << delimeter;
+      myfile << std::setw(std::max(minAsciiColWidth, (int) colName.length())) << std::left << colName << delimeter;
     }
-    myfile << std::endl;
   }
 
   // Write data
-  myfile << "  ";
+  myfile << std::endl;
   int i = 0;
+  myfile << "  ";
   for (double value : values) {
-    myfile << std::setw(std::max(minAsciiColWidth, (int) colNames[i++].length())) << value << delimeter;
+    myfile << std::setw(std::max(minAsciiColWidth, (int) colNames[i++].length())) << std::left << value << delimeter;
   }
 
   myfile.close();

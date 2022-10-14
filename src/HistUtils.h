@@ -2,6 +2,7 @@
 #define HistUtils_hh 1
 
 #include <TH1.h>
+#include <TH2.h>
 #include <TList.h>
 #include <TTree.h>
 
@@ -51,7 +52,21 @@ namespace HistUtils {
    * @param minBin minimum bin number.
    * @param maxBin maximum bin number.
    * @return new TH1 histogram.
-   */  TH1* cropHistogram(TH1 *hist, Int_t minBin, Int_t maxBin);
+   */
+  TH1* cropHistogram(TH1 *hist, Int_t minBin, Int_t maxBin);
+
+  /**
+   * @brief Make 3D histogram stack.
+   *
+   * A list of TH1 histograms are aligned one after another in a 3D stack way
+   *
+   * @param histList TList of histograms.
+   * @param axisMin minimum new axis number.
+   * @param axisMax maximum new axis number.
+   * @param name name of returned histogram
+   * @return new TH2* histogram.
+   */
+   TH2* makeHistStack(TList* histList, Double_t axisMin = 0, Double_t axisMax = 1, const char* name="");
 }
 
 #endif
