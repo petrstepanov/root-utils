@@ -270,7 +270,7 @@ Int_t FileUtils::exportHistToGnuplot(TH1 *hist, const char *baseName, const char
     if (!object->InheritsFrom(TF1::Class())) continue;
     TF1* func = (TF1*)object;
     TString baseName2 = TString::Format("%s-%s", baseName, hist->GetName());
-    exportFuncToGnuplot(func, baseName2);
+    exportFuncToGnuplot(func, baseName2.Data());
   }
 
   // Success
