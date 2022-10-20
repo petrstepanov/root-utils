@@ -1,7 +1,8 @@
 var namespaces_dup =
 [
     [ "FileUtils", "namespaceFileUtils.html", [
-      [ "exportValuesToGnuplot", "namespaceFileUtils.html#a82a8715fc1e1d52e21875a816b920256", null ],
+      [ "exportCanvasToGnuplot", "namespaceFileUtils.html#a59dea810c85ca01e79d8e83f478230f8", null ],
+      [ "exportValuesToGnuplot", "namespaceFileUtils.html#af673e59511f06c7555f539c2abd1a727", null ],
       [ "findFilesInDirectory", "namespaceFileUtils.html#a96a2b93d8699379f78c048e90b4968c9", null ],
       [ "getBranch", "namespaceFileUtils.html#a45e68df91807fe034fd708eb008cb7e4", null ],
       [ "getBranchHistogram", "namespaceFileUtils.html#aa15e5724ad5a206fcf80a47ea94cb471", null ],

@@ -8,6 +8,7 @@
 #include <TFile.h>
 #include <TTree.h>
 #include <TBranch.h>
+#include <TCanvas.h>
 #include <vector>
 
 /** @struct PathComponents
@@ -60,7 +61,7 @@ namespace FileUtils {
    * @param filePathName ROOT option "NEW", "RECREATE", "UPDATE", "READ".. (optional, default is "READ").
    * @return Pointer to TFile* object.
    */
-  TFile* openFile(const char *filePathName, Option_t* option = "READ");
+  TFile* openFile(const char *filePathName, Option_t *option = "READ");
 
   /**
    * @brief Parse absolute file path into path, name and extension.
@@ -153,8 +154,23 @@ namespace FileUtils {
    * @param delimeter column delimeter (default "   ").
    * @return 0 if success, 1 if error.
    */
-  Int_t exportValuesToGnuplot(TString filename, std::vector<std::string> colNames, std::vector<double> values,
+  Int_t exportValuesToGnuplot(const char *filename, std::vector<std::string> colNames, std::vector<double> values,
     const char *delimeter = "   ");
+
+  /**
+   * @brief Export ROOT canvas to ASCII file with data columns.
+   *
+   * Function saves objects on Canvas - histograms, graph, function - to a text file ready to plot in Gnuplot.
+   *
+   * @param filename absolute file path.
+   * @param canvas ROOT canvas to be saved.
+   * @param delimeter column delimeter (default "   ").
+   * @return 0 if success, 1 if error.
+   */
+  Int_t exportCanvasToGnuplot(TCanvas *canvas, const char *delimeter = "   ");
+
+  Int_t exportHistToGnuplot(TH1 *hist, const char *canvasName, const char *delimeter = "   ");
+  Int_t exportFuncToGnuplot(TF1 *hist, const char *canvasName, const char *delimeter = "   ");
 }
 
 #endif

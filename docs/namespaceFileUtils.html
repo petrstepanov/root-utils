@@ -122,15 +122,58 @@ Functions</h2></td></tr>
 <tr class="memitem:a6c7da44223cc4a1f99f2ec73a3d3c80f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPathComponents.html">PathComponents</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFileUtils.html#a6c7da44223cc4a1f99f2ec73a3d3c80f">parseFilePath</a> (const char *filePathName)</td></tr>
 <tr class="memdesc:a6c7da44223cc4a1f99f2ec73a3d3c80f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse absolute file path into path, name and extension.  <a href="namespaceFileUtils.html#a6c7da44223cc4a1f99f2ec73a3d3c80f">More...</a><br /></td></tr>
 <tr class="separator:a6c7da44223cc4a1f99f2ec73a3d3c80f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82a8715fc1e1d52e21875a816b920256"><td class="memItemLeft" align="right" valign="top">Int_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFileUtils.html#a82a8715fc1e1d52e21875a816b920256">exportValuesToGnuplot</a> (TString filename, std::vector&lt; std::string &gt; colNames, std::vector&lt; double &gt; values, const char *delimeter=&quot;   &quot;)</td></tr>
-<tr class="memdesc:a82a8715fc1e1d52e21875a816b920256"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append or save data to a Gnuplot file.  <a href="namespaceFileUtils.html#a82a8715fc1e1d52e21875a816b920256">More...</a><br /></td></tr>
-<tr class="separator:a82a8715fc1e1d52e21875a816b920256"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af673e59511f06c7555f539c2abd1a727"><td class="memItemLeft" align="right" valign="top">Int_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFileUtils.html#af673e59511f06c7555f539c2abd1a727">exportValuesToGnuplot</a> (const char *filename, std::vector&lt; std::string &gt; colNames, std::vector&lt; double &gt; values, const char *delimeter=&quot;   &quot;)</td></tr>
+<tr class="memdesc:af673e59511f06c7555f539c2abd1a727"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append or save data to a Gnuplot file.  <a href="namespaceFileUtils.html#af673e59511f06c7555f539c2abd1a727">More...</a><br /></td></tr>
+<tr class="separator:af673e59511f06c7555f539c2abd1a727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59dea810c85ca01e79d8e83f478230f8"><td class="memItemLeft" align="right" valign="top">Int_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFileUtils.html#a59dea810c85ca01e79d8e83f478230f8">exportCanvasToGnuplot</a> (TCanvas *canvas, const char *delimeter=&quot;   &quot;)</td></tr>
+<tr class="memdesc:a59dea810c85ca01e79d8e83f478230f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Export ROOT canvas to ASCII file with data columns.  <a href="namespaceFileUtils.html#a59dea810c85ca01e79d8e83f478230f8">More...</a><br /></td></tr>
+<tr class="separator:a59dea810c85ca01e79d8e83f478230f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains useful functions for ROOT file manipulation. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a82a8715fc1e1d52e21875a816b920256"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82a8715fc1e1d52e21875a816b920256">&#9670;&nbsp;</a></span>exportValuesToGnuplot()</h2>
+<a id="a59dea810c85ca01e79d8e83f478230f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59dea810c85ca01e79d8e83f478230f8">&#9670;&nbsp;</a></span>exportCanvasToGnuplot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Int_t FileUtils::exportCanvasToGnuplot </td>
+          <td>(</td>
+          <td class="paramtype">TCanvas *&#160;</td>
+          <td class="paramname"><em>canvas</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>delimeter</em> = <code>&quot;&#160;&#160;&#160;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Export ROOT canvas to ASCII file with data columns. </p>
+<p>Function saves objects on Canvas - histograms, graph, function - to a text file ready to plot in Gnuplot.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>absolute file path. </td></tr>
+    <tr><td class="paramname">canvas</td><td>ROOT canvas to be saved. </td></tr>
+    <tr><td class="paramname">delimeter</td><td>column delimeter (default "   "). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if success, 1 if error. </dd></dl>
+
+</div>
+</div>
+<a id="af673e59511f06c7555f539c2abd1a727"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af673e59511f06c7555f539c2abd1a727">&#9670;&nbsp;</a></span>exportValuesToGnuplot()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -138,7 +181,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">Int_t FileUtils::exportValuesToGnuplot </td>
           <td>(</td>
-          <td class="paramtype">TString&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>filename</em>, </td>
         </tr>
         <tr>
