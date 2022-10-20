@@ -288,7 +288,7 @@ Int_t FileUtils::exportFuncToGnuplot(TF1 *func, const char *baseName, const char
   // Save single energy resolution point to ASCII
   std::string xLabel = strlen(func->GetXaxis()->GetTitle()) > 0 ? func->GetXaxis()->GetTitle() : "X";
   std::string yLabel = strlen(func->GetYaxis()->GetTitle()) > 0 ? func->GetXaxis()->GetTitle() : "Y";
-  for (Int_t i = 0; func->GetNpx(); i++) {
+  for (Int_t i = 0; i<=func->GetNpx(); i++) {
     Double_t x = func->GetXmin() + (func->GetXmax() - func->GetXmin()) / func->GetNpx() * i;
     Double_t y = func->Eval(x);
     std::vector<std::string> colNames = { xLabel, yLabel };
