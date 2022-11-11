@@ -63,6 +63,8 @@ message(STATUS "Found list of source files: ${SOURCES}")
 set(LIB_NAMES "")
 list(APPEND LIB_NAMES "ROOT::Core")
 list(APPEND LIB_NAMES "ROOT::Gpad")
+list(APPEND LIB_NAMES "ROOT::Gui")
+list(APPEND LIB_NAMES "ROOT::Physics")
 
 # TARGET: create shared library
 set(SHARED_LIB_TARGET ${PROJECT_NAME}-so)
