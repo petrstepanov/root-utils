@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['histutils_48',['HistUtils',['../namespaceHistUtils.html',1,'']]]
+  ['histutils_49',['HistUtils',['../namespaceHistUtils.html',1,'']]]
 ];

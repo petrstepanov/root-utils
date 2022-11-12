@@ -7,7 +7,14 @@
 #include <TObjString.h>
 #include <TError.h>
 
+#include <TH1.h>
+#include <TF1.h>
+#include <TGraph.h>
+#include <TMultiGraph.h>
+#include <TSystem.h>
+
 // STD includes
+#include <vector>
 #include <limits>
 #include <iomanip>
 #include <fstream>
@@ -68,7 +75,7 @@ TList* FileUtils::findFilesInDirectory(const char *dirPath, const char *extensio
   return filePathNames;
 }
 
-TFile* FileUtils::openFile(const char* filePathName, Option_t* option) {
+TFile* FileUtils::openFile(const char *filePathName, Option_t *option) {
   Info("FileUtils::openFile()", "Opening file \"%s\"...", filePathName);
   TFile *file = new TFile(filePathName, option);
   if (file->IsZombie()) {
@@ -198,8 +205,8 @@ TH1* FileUtils::getBranchHistogram(TTree *tree, const char *branchName, Int_t nB
   return hist;
 }
 
-Int_t FileUtils::exportValuesToGnuplot(TString filename, std::vector<std::string> colNames, std::vector<double> values,
-  const char *delimeter) {
+Int_t FileUtils::exportValuesToGnuplot(const char *filename, std::vector<std::string> colNames,
+  std::vector<double> values, const char *delimeter) {
   std::ofstream myfile;
   Bool_t fileExisted = kFALSE;
   if (gSystem->AccessPathName(filename, EAccessMode::kFileExists)) {
@@ -212,7 +219,7 @@ Int_t FileUtils::exportValuesToGnuplot(TString filename, std::vector<std::string
   }
   // Check file opened successfully
   if (!myfile.is_open()) {
-    Error("exportPointToGnuplot()", "Cannot create \"%s\"", filename.Data());
+    Error("exportPointToGnuplot()", "Cannot create \"%s\"", filename);
     return 1;
   }
 
@@ -237,4 +244,79 @@ Int_t FileUtils::exportValuesToGnuplot(TString filename, std::vector<std::string
 
   myfile.close();
   return 0;
+}
+
+Int_t FileUtils::exportHistToGnuplot(TH1 *hist, const char *baseName, const char *delimeter) {
+  TString fileName = TString::Format("%s-%s.dat", baseName, hist->GetName());
+
+  // Delete existing file
+  gSystem->Unlink(fileName.Data());
+
+  // Create new file
+
+  // Save single energy resolution point to ASCII
+  std::string xLabel = strlen(hist->GetXaxis()->GetTitle()) > 0 ? hist->GetXaxis()->GetTitle() : "Bin center";
+  std::string yLabel = strlen(hist->GetYaxis()->GetTitle()) > 0 ? hist->GetXaxis()->GetTitle() : "Bin content";
+  for (Int_t i = 1; i <= hist->GetNbinsX(); i++) {
+    std::vector<std::string> colNames = { xLabel, yLabel, "Error" };
+    std::vector<double> values = { hist->GetBinCenter(i), hist->GetBinContent(i), hist->GetBinError(i) };
+    FileUtils::exportValuesToGnuplot(fileName.Data(), colNames, values);
+  }
+
+  hist->GetListOfFunctions()->Print();
+
+  // Export list of histogram functions
+  for (TObject* object : *(hist->GetListOfFunctions())){
+    if (!object->InheritsFrom(TF1::Class())) continue;
+    TF1* func = (TF1*)object;
+    TString baseName2 = TString::Format("%s-%s", baseName, hist->GetName());
+    exportFuncToGnuplot(func, baseName2.Data());
+  }
+
+  // Success
+  return 1;
+}
+
+Int_t FileUtils::exportFuncToGnuplot(TF1 *func, const char *baseName, const char *delimeter) {
+  TString fileName = TString::Format("%s-%s.dat", baseName, func->GetName());
+
+  // Delete existing file
+  gSystem->Unlink(fileName.Data());
+
+  // Create new file
+
+  // Save single energy resolution point to ASCII
+  std::string xLabel = strlen(func->GetXaxis()->GetTitle()) > 0 ? func->GetXaxis()->GetTitle() : "X";
+  std::string yLabel = strlen(func->GetYaxis()->GetTitle()) > 0 ? func->GetXaxis()->GetTitle() : "Y";
+  for (Int_t i = 0; i<=func->GetNpx(); i++) {
+    Double_t x = func->GetXmin() + (func->GetXmax() - func->GetXmin()) / func->GetNpx() * i;
+    Double_t y = func->Eval(x);
+    std::vector<std::string> colNames = { xLabel, yLabel };
+    std::vector<double> values = { x, y };
+    FileUtils::exportValuesToGnuplot(fileName.Data(), colNames, values);
+  }
+
+  // Success
+  return 1;
+}
+
+Int_t FileUtils::exportCanvasToGnuplot(TCanvas *canvas, const char *delimeter) {
+  Int_t returnValue = 0;
+
+  // Iterate and export all canvas primitives
+  for (TObject *object : *(canvas->GetListOfPrimitives())) {
+    if (TH1 *hist = dynamic_cast<TH1*>(object)) {
+      // returnValue = returnValue && exportHistToGnuplot(hist, canvas->GetName(), delimeter);
+      exportHistToGnuplot(hist, canvas->GetName(), delimeter);
+    }
+    if (TF1 *func = dynamic_cast<TF1*>(object)) {
+      // returnValue = returnValue && exportFuncToGnuplot(func, canvas->GetName(), delimeter);
+      exportFuncToGnuplot(func, canvas->GetName(), delimeter);
+    }
+    if (TGraph *graph = dynamic_cast<TGraph*>(object)) {
+      // TODO: implement
+    }
+  }
+
+  return returnValue;
 }
