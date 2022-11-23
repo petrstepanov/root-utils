@@ -56,12 +56,20 @@ namespace FitUtils {
   TVector2 getCrystalBallDispersion(TF1* cball);
 
   /**
+   * Enum defines how to calculate Crystall Ball function mean, dispersion and resolution.
+   */
+  enum ResolutionType {
+    CBFunctionMomenta,    /*!< Based on the Crystal Ball function momenta */
+    CBGaussianPart        /*!< Based on Gaussian part of the Crystal Ball function sigma/mean */
+  };
+
+  /**
    * @brief Calculate Crystal Ball resolution value (standard deviation / mean).
    *
    * @param cball Crystal ball function.
    * @return TVector2 resolution value and error.
    */
-  TVector2 getCrystalBallResolution(TF1* cball);
+  TVector2 getCrystalBallResolution(TF1* cball, ResolutionType rt = CBFunctionMomenta);
 
   /**
    * @brief Calculate resolution of a distribution with given standard deviation and mean.

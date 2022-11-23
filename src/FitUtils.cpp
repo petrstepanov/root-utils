@@ -192,10 +192,19 @@ TVector2 FitUtils::evalResolution(Double_t mean, Double_t meanErr, Double_t std,
   return resolution;
 }
 
-TVector2 FitUtils::getCrystalBallResolution(TF1* cball){
-  TVector2 mean = getCrystalBallMean(cball);
-  TVector2 std = getCrystalBallDispersion(cball);
+TVector2 FitUtils::getCrystalBallResolution(TF1* cball, ResolutionType rt){
+  if (rt == ResolutionType::CBFunctionMomenta){
+    TVector2 mean = getCrystalBallMean(cball);
+    TVector2 std = getCrystalBallDispersion(cball);
+    TVector2 cbResolution = evalResolution(mean.X(), mean.Y(), std.X(), std.Y());
+    return cbResolution;
+  }
 
-  return evalResolution(mean.X(), mean.Y(), std.X(), std.Y());
+  Double_t gausMean = cball->GetParameter(2);
+  Double_t gausMeanErr = cball->GetParError(2);
+  Double_t gausSigma = cball->GetParameter(3);
+  Double_t gausSigmaErr = cball->GetParError(3);
+  TVector2 gausResolution = FitUtils::evalResolution(gausMean, gausMeanErr, gausSigma, gausSigmaErr);
+  return gausResolution;
 
 }
