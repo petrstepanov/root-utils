@@ -103,7 +103,6 @@ TF1* FitUtils::getCrystalBallFunction(TH1 *hist, Bool_t reversed) {
   return fBall;
 }
 
-
 TVector2 FitUtils::getCrystalBallMean(TF1* cball){
   Double_t xMin = cball->GetXmin();
   Double_t xMax = cball->GetXmax();
@@ -182,6 +181,37 @@ TVector2 FitUtils::getCrystalBallDispersion(TF1* cball){
   Double_t dispersion = TMath::Sqrt(intX2fX);
   TVector2 std(dispersion, cball->GetParError(3));
   return std; */
+}
+
+TF1* FitUtils::getCrystalBallGaussFunction(TF1* cball){
+  LongDouble_t a = cball->GetParameter(0);
+  LongDouble_t n = cball->GetParameter(1);
+  LongDouble_t mean = cball->GetParameter(2);
+  LongDouble_t sigma = cball->GetParameter(3);
+  LongDouble_t norm = cball->GetParameter(4);
+
+  LongDouble_t abs_a = TMath::Abs(a);
+
+  LongDouble_t C = n / abs_a / (n - 1) * TMath::Exp(-abs_a * abs_a / 2);
+  LongDouble_t D = TMath::Sqrt(TMath::PiOver2()) * (1 + TMath::Erf(abs_a / TMath::Sqrt2()));
+  LongDouble_t N = 1 / sigma / (C + D);
+
+  // COMPOSE GAUSSIAN PART
+
+  // Create normalized gaussian ROOT function ("gaussn"!)
+  TString cballGaussName = TString::Format("%s-gauss", cball->GetName());
+  TF1* cballGauss = new TF1(cballGaussName.Data(), "gausn", cball->GetXmin(), cball->GetXmax());
+  cballGauss->SetNpx(cball->GetNpx());
+
+  // Calculate gaussian "constant" - basically integral. How? Multiply and divide gaussian formula on the gaussian normalization factor.
+  Double_t gaussContribution = N*sigma*TMath::Sqrt(2*TMath::Pi());
+  cballGauss->SetParameter(0, norm * gaussContribution);
+
+  // Set other gaussian parameters from the crystal ball function
+  cballGauss->SetParameter(1, mean);
+  cballGauss->SetParameter(2, sigma);
+
+  return cballGauss;
 }
 
 TVector2 FitUtils::evalResolution(Double_t mean, Double_t meanErr, Double_t std, Double_t stdErr){
