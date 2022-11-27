@@ -167,7 +167,7 @@ Double_t FileUtils::getBranchMinimumInFiles(TList *filePaths, const char *treeNa
     // Get branch maximum value
     Double_t branchMinimum = getBranchMinimum(tree, branchName);
 
-    minimum = TMath::Max(minimum, branchMinimum);
+    minimum = TMath::Min(minimum, branchMinimum);
   }
   return minimum;
 }

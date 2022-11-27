@@ -56,6 +56,14 @@ namespace FitUtils {
   TVector2 getCrystalBallDispersion(TF1* cball);
 
   /**
+   * @brief Get gaussian part of the crystal ball function.
+   *
+   * @param cball Crystal ball function.
+   * @return TF1* gaussian function.
+   */
+  TF1* getCrystalBallGaussFunction(TF1* cball);
+
+  /**
    * Enum defines how to calculate Crystall Ball function mean, dispersion and resolution.
    */
   enum ResolutionType {
