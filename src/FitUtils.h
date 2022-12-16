@@ -35,7 +35,17 @@ namespace FitUtils {
    * @param reversed set if Crystal Ball function is reversed or not. Default is kFALSE.
    * @return ROOT function ready for fitting.
    */
-  TF1* getCrystalBallFunction(TH1 *hist, Bool_t reversed = kFALSE);
+  TF1* getCrystalBallFunction(TH1 *hist, Bool_t reversed);
+
+  /**
+   * @brief Obtain best CrystalBall function (original or reversed) that fits the histogram.
+   *
+   * Function fits the histogram with both crystal ball functions and determines which one provides the best fit.
+   *
+   * @param hist histogram to be fitted.
+   * @return original or reversed crystal ball function.
+   */
+  TF1* getCrystalBallFunction(TH1 *hist);
 
   /**
    * @brief Calculate Crystal Ball function mean value.
@@ -61,7 +71,7 @@ namespace FitUtils {
    * @param cball Crystal ball function.
    * @return TF1* gaussian function.
    */
-  TF1* getCrystalBallGaussFunction(TF1* cball);
+  TF1* getCrystalBallGaussComponent(TF1* cball);
 
   /**
    * Enum defines how to calculate Crystall Ball function mean, dispersion and resolution.

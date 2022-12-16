@@ -85,6 +85,7 @@ $(document).ready(function(){initNavTree('namespaceFitUtils.html',''); initResiz
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">FitUtils Namespace Reference</div>  </div>
@@ -96,27 +97,62 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFitUtils_1_1CrystalBallFunctionObject.html">CrystalBallFunctionObject</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ae194638443b099becd50653d14bf881a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFitUtils.html#ae194638443b099becd50653d14bf881a">ResolutionType</a> { <a class="el" href="namespaceFitUtils.html#ae194638443b099becd50653d14bf881aa8cc191ab99764a557f4160ada01fb653">CBFunctionMomenta</a>
+, <a class="el" href="namespaceFitUtils.html#ae194638443b099becd50653d14bf881aa627e302127407440df102e537d5cf71b">CBGaussianPart</a>
+ }</td></tr>
+<tr class="separator:ae194638443b099becd50653d14bf881a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a82ac01cf47da339477fa1dfa53d4df22"><td class="memItemLeft" align="right" valign="top">TF1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFitUtils.html#a82ac01cf47da339477fa1dfa53d4df22">getCrystalBallFunction</a> (TH1 *hist, Bool_t reversed=kFALSE)</td></tr>
-<tr class="memdesc:a82ac01cf47da339477fa1dfa53d4df22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain a CrystalBall fitting function based on a given histogram.  <a href="namespaceFitUtils.html#a82ac01cf47da339477fa1dfa53d4df22">More...</a><br /></td></tr>
-<tr class="separator:a82ac01cf47da339477fa1dfa53d4df22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdc9b5c691f1775eb146372728abfa2a"><td class="memItemLeft" align="right" valign="top">TF1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFitUtils.html#abdc9b5c691f1775eb146372728abfa2a">getCrystalBallFunction</a> (TH1 *hist, Bool_t reversed)</td></tr>
+<tr class="memdesc:abdc9b5c691f1775eb146372728abfa2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain a CrystalBall fitting function based on a given histogram.  <a href="namespaceFitUtils.html#abdc9b5c691f1775eb146372728abfa2a">More...</a><br /></td></tr>
+<tr class="separator:abdc9b5c691f1775eb146372728abfa2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28a8be94faf5626e0871df08e8d1178a"><td class="memItemLeft" align="right" valign="top">TF1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFitUtils.html#a28a8be94faf5626e0871df08e8d1178a">getCrystalBallFunction</a> (TH1 *hist)</td></tr>
+<tr class="memdesc:a28a8be94faf5626e0871df08e8d1178a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain best CrystalBall function (original or reversed) that fits the histogram.  <a href="namespaceFitUtils.html#a28a8be94faf5626e0871df08e8d1178a">More...</a><br /></td></tr>
+<tr class="separator:a28a8be94faf5626e0871df08e8d1178a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee2384459c6470059d640af5a9173841"><td class="memItemLeft" align="right" valign="top">TVector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFitUtils.html#aee2384459c6470059d640af5a9173841">getCrystalBallMean</a> (TF1 *cball)</td></tr>
 <tr class="memdesc:aee2384459c6470059d640af5a9173841"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate Crystal Ball function mean value.  <a href="namespaceFitUtils.html#aee2384459c6470059d640af5a9173841">More...</a><br /></td></tr>
 <tr class="separator:aee2384459c6470059d640af5a9173841"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb1e244876bc72f146bc20d07247a55a"><td class="memItemLeft" align="right" valign="top">TVector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFitUtils.html#adb1e244876bc72f146bc20d07247a55a">getCrystalBallDispersion</a> (TF1 *cball)</td></tr>
 <tr class="memdesc:adb1e244876bc72f146bc20d07247a55a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate Crystal Ball dispersion (standard deviation) value.  <a href="namespaceFitUtils.html#adb1e244876bc72f146bc20d07247a55a">More...</a><br /></td></tr>
 <tr class="separator:adb1e244876bc72f146bc20d07247a55a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af07ea06acce15aafc3886578aaf13b9c"><td class="memItemLeft" align="right" valign="top">TVector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFitUtils.html#af07ea06acce15aafc3886578aaf13b9c">getCrystalBallResolution</a> (TF1 *cball)</td></tr>
-<tr class="memdesc:af07ea06acce15aafc3886578aaf13b9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate Crystal Ball resolution value (standard deviation / mean).  <a href="namespaceFitUtils.html#af07ea06acce15aafc3886578aaf13b9c">More...</a><br /></td></tr>
-<tr class="separator:af07ea06acce15aafc3886578aaf13b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a593f4d11d0c1a30cf7ace95e5539b5c0"><td class="memItemLeft" align="right" valign="top">TF1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFitUtils.html#a593f4d11d0c1a30cf7ace95e5539b5c0">getCrystalBallGaussComponent</a> (TF1 *cball)</td></tr>
+<tr class="memdesc:a593f4d11d0c1a30cf7ace95e5539b5c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get gaussian part of the crystal ball function.  <a href="namespaceFitUtils.html#a593f4d11d0c1a30cf7ace95e5539b5c0">More...</a><br /></td></tr>
+<tr class="separator:a593f4d11d0c1a30cf7ace95e5539b5c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a473e3fa387b840e65438b9d54ba1f8fc"><td class="memItemLeft" align="right" valign="top">TVector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFitUtils.html#a473e3fa387b840e65438b9d54ba1f8fc">getCrystalBallResolution</a> (TF1 *cball, <a class="el" href="namespaceFitUtils.html#ae194638443b099becd50653d14bf881a">ResolutionType</a> rt=<a class="el" href="namespaceFitUtils.html#ae194638443b099becd50653d14bf881aa8cc191ab99764a557f4160ada01fb653">CBFunctionMomenta</a>)</td></tr>
+<tr class="memdesc:a473e3fa387b840e65438b9d54ba1f8fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate Crystal Ball resolution value (standard deviation / mean).  <a href="namespaceFitUtils.html#a473e3fa387b840e65438b9d54ba1f8fc">More...</a><br /></td></tr>
+<tr class="separator:a473e3fa387b840e65438b9d54ba1f8fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac329511d8bbfba228a4c84b4ed3f7d6e"><td class="memItemLeft" align="right" valign="top">TVector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFitUtils.html#ac329511d8bbfba228a4c84b4ed3f7d6e">evalResolution</a> (Double_t mean, Double_t meanErr, Double_t std, Double_t stdErr)</td></tr>
 <tr class="memdesc:ac329511d8bbfba228a4c84b4ed3f7d6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate resolution of a distribution with given standard deviation and mean.  <a href="namespaceFitUtils.html#ac329511d8bbfba228a4c84b4ed3f7d6e">More...</a><br /></td></tr>
 <tr class="separator:ac329511d8bbfba228a4c84b4ed3f7d6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of a Crystal Ball function in ROOT. Supports regular and reversed crystal ball functions. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ae194638443b099becd50653d14bf881a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae194638443b099becd50653d14bf881a">&#9670;&nbsp;</a></span>ResolutionType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespaceFitUtils.html#ae194638443b099becd50653d14bf881a">FitUtils::ResolutionType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Enum defines how to calculate Crystall Ball function mean, dispersion and resolution. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae194638443b099becd50653d14bf881aa8cc191ab99764a557f4160ada01fb653"></a>CBFunctionMomenta&#160;</td><td class="fielddoc"><p>Based on the Crystal Ball function momenta </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae194638443b099becd50653d14bf881aa627e302127407440df102e537d5cf71b"></a>CBGaussianPart&#160;</td><td class="fielddoc"><p>Based on Gaussian part of the Crystal Ball function sigma/mean </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="ac329511d8bbfba228a4c84b4ed3f7d6e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac329511d8bbfba228a4c84b4ed3f7d6e">&#9670;&nbsp;</a></span>evalResolution()</h2>
 
@@ -197,8 +233,36 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a82ac01cf47da339477fa1dfa53d4df22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82ac01cf47da339477fa1dfa53d4df22">&#9670;&nbsp;</a></span>getCrystalBallFunction()</h2>
+<a id="a28a8be94faf5626e0871df08e8d1178a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28a8be94faf5626e0871df08e8d1178a">&#9670;&nbsp;</a></span>getCrystalBallFunction() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TF1 * FitUtils::getCrystalBallFunction </td>
+          <td>(</td>
+          <td class="paramtype">TH1 *&#160;</td>
+          <td class="paramname"><em>hist</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtain best CrystalBall function (original or reversed) that fits the histogram. </p>
+<p>Function fits the histogram with both crystal ball functions and determines which one provides the best fit.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hist</td><td>histogram to be fitted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>original or reversed crystal ball function. </dd></dl>
+
+</div>
+</div>
+<a id="abdc9b5c691f1775eb146372728abfa2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdc9b5c691f1775eb146372728abfa2a">&#9670;&nbsp;</a></span>getCrystalBallFunction() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -213,7 +277,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Bool_t&#160;</td>
-          <td class="paramname"><em>reversed</em> = <code>kFALSE</code>&#160;</td>
+          <td class="paramname"><em>reversed</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -233,6 +297,33 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ROOT function ready for fitting. </dd></dl>
+
+</div>
+</div>
+<a id="a593f4d11d0c1a30cf7ace95e5539b5c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a593f4d11d0c1a30cf7ace95e5539b5c0">&#9670;&nbsp;</a></span>getCrystalBallGaussComponent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TF1 * FitUtils::getCrystalBallGaussComponent </td>
+          <td>(</td>
+          <td class="paramtype">TF1 *&#160;</td>
+          <td class="paramname"><em>cball</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get gaussian part of the crystal ball function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cball</td><td>Crystal ball function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>TF1* gaussian function. </dd></dl>
 
 </div>
 </div>
@@ -264,8 +355,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af07ea06acce15aafc3886578aaf13b9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af07ea06acce15aafc3886578aaf13b9c">&#9670;&nbsp;</a></span>getCrystalBallResolution()</h2>
+<a id="a473e3fa387b840e65438b9d54ba1f8fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a473e3fa387b840e65438b9d54ba1f8fc">&#9670;&nbsp;</a></span>getCrystalBallResolution()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -274,8 +365,18 @@ Functions</h2></td></tr>
           <td class="memname">TVector2 FitUtils::getCrystalBallResolution </td>
           <td>(</td>
           <td class="paramtype">TF1 *&#160;</td>
-          <td class="paramname"><em>cball</em></td><td>)</td>
+          <td class="paramname"><em>cball</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="namespaceFitUtils.html#ae194638443b099becd50653d14bf881a">ResolutionType</a>&#160;</td>
+          <td class="paramname"><em>rt</em> = <code><a class="el" href="namespaceFitUtils.html#ae194638443b099becd50653d14bf881aa8cc191ab99764a557f4160ada01fb653">CBFunctionMomenta</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

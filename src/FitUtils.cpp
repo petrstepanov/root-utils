@@ -8,6 +8,7 @@
 //#include <iostream>
 //#include <iomanip>
 //#include <fstream>
+#include <TFitResult.h>
 
 using namespace TMath;
 
@@ -68,7 +69,6 @@ TF1* FitUtils::getCrystalBallFunction(TH1 *hist, Bool_t reversed) {
   CrystalBallFunctionObject *fFunctionObject = new CrystalBallFunctionObject(reversed);
   Double_t minX = hist->GetXaxis()->GetBinLowEdge(1);
   Double_t maxX = hist->GetXaxis()->GetBinUpEdge(hist->GetNbinsX());
-//  Double_t intervalX = maxX-minX;
   fBall = new TF1("fBall", *fFunctionObject, minX, maxX, 5);    // create TF1 class.
 
   fBall->SetNpx(500);
@@ -101,6 +101,19 @@ TF1* FitUtils::getCrystalBallFunction(TH1 *hist, Bool_t reversed) {
   //           also use Long Double vs Double in the fitting function evaluate()
 
   return fBall;
+}
+
+TF1* FitUtils::getCrystalBallFunction(TH1 *hist) {
+  TF1 *fBall = getCrystalBallFunction(hist, kFALSE);
+  TF1 *fBallReversed = getCrystalBallFunction(hist, kTRUE);
+
+  // Save extended Fit Result: https://root.cern.ch/doc/master/classTH1.html#autotoc_md355
+  TFitResultPtr fitResult = hist->Fit(fBall, "S");
+  TFitResultPtr fitResultReversed = hist->Fit(fBallReversed, "S");
+
+  if (fitResult.Get()->Chi2() < fitResultReversed.Get()->Chi2()) return fBall;
+
+  return fBallReversed;
 }
 
 TVector2 FitUtils::getCrystalBallMean(TF1* cball){
@@ -183,7 +196,7 @@ TVector2 FitUtils::getCrystalBallDispersion(TF1* cball){
   return std; */
 }
 
-TF1* FitUtils::getCrystalBallGaussFunction(TF1* cball){
+TF1* FitUtils::getCrystalBallGaussComponent(TF1* cball){
   LongDouble_t a = cball->GetParameter(0);
   LongDouble_t n = cball->GetParameter(1);
   LongDouble_t mean = cball->GetParameter(2);
