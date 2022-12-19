@@ -206,20 +206,24 @@ TH1* FileUtils::getBranchHistogram(TTree *tree, const char *branchName, Int_t nB
 }
 
 Int_t FileUtils::exportValuesToGnuplot(const char *filename, std::vector<std::string> colNames,
-  std::vector<double> values, const char *delimeter) {
+  std::vector<std::vector<double>> data, const char *delimeter) {
   std::ofstream myfile;
   Bool_t fileExisted = kFALSE;
-  if (gSystem->AccessPathName(filename, EAccessMode::kFileExists)) {
-    // File not exists
-    myfile.open(filename);
-  } else {
-    // File exists
-    myfile.open(filename, std::ios_base::app);
-    fileExisted = kTRUE;
-  }
+
+//  if (gSystem->AccessPathName(filename, EAccessMode::kFileExists)) {
+//    // File not exists
+//    myfile.open(filename);
+//  } else {
+//    // File exists
+//    myfile.open(filename, std::ios_base::app);
+//    fileExisted = kTRUE;
+//  }
+
+  myfile.open(filename);
+
   // Check file opened successfully
   if (!myfile.is_open()) {
-    Error("exportPointToGnuplot()", "Cannot create \"%s\"", filename);
+    Error("exportValuesToGnuplot()", "Cannot create \"%s\"", filename);
     return 1;
   }
 
@@ -227,19 +231,22 @@ Int_t FileUtils::exportValuesToGnuplot(const char *filename, std::vector<std::st
   int minAsciiColWidth = 10;
 
   // Write header if file was not existing before
-  if (!fileExisted) {
-    myfile << "# ";
-    for (std::string colName : colNames) {
-      myfile << std::setw(std::max(minAsciiColWidth, (int) colName.length())) << std::left << colName << delimeter;
-    }
+//  if (!fileExisted) {
+  myfile << "# ";
+  for (std::string colName : colNames) {
+    myfile << std::setw(std::max(minAsciiColWidth, (int) colName.length())) << std::left << colName << delimeter;
   }
+  myfile << std::endl;
+//  }
 
   // Write data
-  myfile << std::endl;
-  int i = 0;
-  myfile << "  ";
-  for (double value : values) {
-    myfile << std::setw(std::max(minAsciiColWidth, (int) colNames[i++].length())) << std::left << value << delimeter;
+  for (std::vector<double> line : data) {
+    int i = 0;
+    myfile << "  ";
+    for (double value : line) {
+      myfile << std::setw(std::max(minAsciiColWidth, (int) colNames[i++].length())) << std::left << value << delimeter;
+    }
+    myfile << std::endl;
   }
 
   myfile.close();
@@ -249,26 +256,23 @@ Int_t FileUtils::exportValuesToGnuplot(const char *filename, std::vector<std::st
 Int_t FileUtils::exportHistToGnuplot(TH1 *hist, const char *baseName, const char *delimeter) {
   TString fileName = TString::Format("%s-%s.dat", baseName, hist->GetName());
 
-  // Delete existing file
-  gSystem->Unlink(fileName.Data());
-
-  // Create new file
-
   // Save single energy resolution point to ASCII
-  std::string xLabel = strlen(hist->GetXaxis()->GetTitle()) > 0 ? hist->GetXaxis()->GetTitle() : "Bin center";
-  std::string yLabel = strlen(hist->GetYaxis()->GetTitle()) > 0 ? hist->GetXaxis()->GetTitle() : "Bin content";
+  std::vector<std::vector<double>> data = {};
   for (Int_t i = 1; i <= hist->GetNbinsX(); i++) {
-    std::vector<std::string> colNames = { xLabel, yLabel, "Error" };
     std::vector<double> values = { hist->GetBinCenter(i), hist->GetBinContent(i), hist->GetBinError(i) };
-    FileUtils::exportValuesToGnuplot(fileName.Data(), colNames, values);
+    data.push_back(values);
   }
 
-  hist->GetListOfFunctions()->Print();
+  std::string xLabel = strlen(hist->GetXaxis()->GetTitle()) > 0 ? hist->GetXaxis()->GetTitle() : "Bin center";
+  std::string yLabel = strlen(hist->GetYaxis()->GetTitle()) > 0 ? hist->GetXaxis()->GetTitle() : "Bin content";
+  std::vector<std::string> colNames = { xLabel, yLabel, "Error" };
+  FileUtils::exportValuesToGnuplot(fileName.Data(), colNames, data);
 
   // Export list of histogram functions
-  for (TObject* object : *(hist->GetListOfFunctions())){
-    if (!object->InheritsFrom(TF1::Class())) continue;
-    TF1* func = (TF1*)object;
+  for (TObject *object : *(hist->GetListOfFunctions())) {
+    if (!object->InheritsFrom(TF1::Class()))
+      continue;
+    TF1 *func = (TF1*) object;
     TString baseName2 = TString::Format("%s-%s", baseName, hist->GetName());
     exportFuncToGnuplot(func, baseName2.Data());
   }
@@ -280,21 +284,18 @@ Int_t FileUtils::exportHistToGnuplot(TH1 *hist, const char *baseName, const char
 Int_t FileUtils::exportFuncToGnuplot(TF1 *func, const char *baseName, const char *delimeter) {
   TString fileName = TString::Format("%s-%s.dat", baseName, func->GetName());
 
-  // Delete existing file
-  gSystem->Unlink(fileName.Data());
-
-  // Create new file
-
-  // Save single energy resolution point to ASCII
-  std::string xLabel = strlen(func->GetXaxis()->GetTitle()) > 0 ? func->GetXaxis()->GetTitle() : "X";
-  std::string yLabel = strlen(func->GetYaxis()->GetTitle()) > 0 ? func->GetXaxis()->GetTitle() : "Y";
-  for (Int_t i = 0; i<=func->GetNpx(); i++) {
+  // Save energy resolution points to ASCII
+  std::vector<std::vector<double>> data = {};
+  for (Int_t i = 0; i <= func->GetNpx(); i++) {
     Double_t x = func->GetXmin() + (func->GetXmax() - func->GetXmin()) / func->GetNpx() * i;
     Double_t y = func->Eval(x);
-    std::vector<std::string> colNames = { xLabel, yLabel };
     std::vector<double> values = { x, y };
-    FileUtils::exportValuesToGnuplot(fileName.Data(), colNames, values);
+    data.push_back(values);
   }
+  std::string xLabel = strlen(func->GetXaxis()->GetTitle()) > 0 ? func->GetXaxis()->GetTitle() : "X";
+  std::string yLabel = strlen(func->GetYaxis()->GetTitle()) > 0 ? func->GetXaxis()->GetTitle() : "Y";
+  std::vector<std::string> colNames = { xLabel, yLabel };
+  FileUtils::exportValuesToGnuplot(fileName.Data(), colNames, data);
 
   // Success
   return 1;

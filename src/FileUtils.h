@@ -150,11 +150,11 @@ namespace FileUtils {
    *
    * @param filename absolute file path.
    * @param colNames vector of strings with column names.
-   * @param colNames vector of doubles with row values.
+   * @param colNames vector of vectors with doubles row values.
    * @param delimeter column delimeter (default "   ").
    * @return 0 if success, 1 if error.
    */
-  Int_t exportValuesToGnuplot(const char *filename, std::vector<std::string> colNames, std::vector<double> values,
+  Int_t exportValuesToGnuplot(const char *filename, std::vector<std::string> colNames, std::vector<std::vector<double>> values,
     const char *delimeter = "   ");
 
   /**
